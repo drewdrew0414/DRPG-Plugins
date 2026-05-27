@@ -1,0 +1,10 @@
+name: levelSystem
+description: $description
+version: '${version}'
+
+main: com.drewdrew1.Main
+api-version: '26.1.2'
+load: POSTWORLD
+
+authors: [ drewdrew1 ]
+website: https://github.com/drewdrew0414/DRPG-Plugins

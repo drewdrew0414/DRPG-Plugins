@@ -3,6 +3,8 @@ package com.drewdrew1;
 import com.drewdrew1.api.Database;
 import com.drewdrew1.api.DatabaseService;
 import com.drewdrew1.config.SkillConfigCache;
+import com.drewdrew1.integration.placeholder.PlaceholderApiIntegration;
+import com.drewdrew1.integration.skript.SkriptIntegration;
 import com.drewdrew1.listener.LevelEventListener;
 import com.drewdrew1.progress.LevelProgressService;
 import com.drewdrew1.command.LevelSystemCommand;
@@ -22,6 +24,8 @@ public final class Main extends JavaPlugin {
     private SkillConfigCache skillConfigCache;
     private LevelProgressService levelProgressService;
     private PlacedBlockTracker placedBlockTracker;
+    private Runnable placeholderApiUnregister = () -> {
+    };
 
     @Override
     public void onEnable() {
@@ -48,6 +52,7 @@ public final class Main extends JavaPlugin {
             PluginCommand pluginCommand = Objects.requireNonNull(getCommand("levelSystem"), "levelSystem command");
             pluginCommand.setExecutor(command);
             pluginCommand.setTabCompleter(command);
+            registerOptionalIntegrations();
         } catch (IOException exception) {
             getLogger().log(Level.SEVERE, "Level JSON initialization failed.", exception);
             Bukkit.getPluginManager().disablePlugin(this);
@@ -79,6 +84,13 @@ public final class Main extends JavaPlugin {
                 getLogger().log(Level.WARNING, "Failed to flush placed block state before shutdown.", exception);
             }
         }
+        try {
+            placeholderApiUnregister.run();
+        } catch (RuntimeException | LinkageError exception) {
+            getLogger().log(Level.WARNING, "Failed to unregister PlaceholderAPI expansion.", exception);
+        }
+        placeholderApiUnregister = () -> {
+        };
         placedBlockTracker = null;
         levelProgressService = null;
         skillConfigCache = null;
@@ -115,6 +127,24 @@ public final class Main extends JavaPlugin {
             throw new IllegalStateException("Level database is not initialized.");
         }
         return levelDatabase;
+    }
+
+    private void registerOptionalIntegrations() {
+        if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) {
+            try {
+                placeholderApiUnregister = PlaceholderApiIntegration.register(this);
+            } catch (RuntimeException | LinkageError exception) {
+                getLogger().log(Level.WARNING, "PlaceholderAPI integration failed to register.", exception);
+            }
+        }
+
+        if (Bukkit.getPluginManager().isPluginEnabled("Skript")) {
+            try {
+                SkriptIntegration.register(this);
+            } catch (RuntimeException | LinkageError exception) {
+                getLogger().log(Level.WARNING, "Skript integration failed to register.", exception);
+            }
+        }
     }
 
     private Database loadDatabase() {

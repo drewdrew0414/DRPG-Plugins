@@ -6,6 +6,7 @@ main: com.drewdrew1.Main
 api-version: '26.1.2'
 load: POSTWORLD
 depend: [DBManager]
+softdepend: [PlaceholderAPI, Skript]
 
 commands:
   levelSystem:

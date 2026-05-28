@@ -81,6 +81,80 @@ public final class LevelProgressService {
         });
     }
 
+    public void addRawExp(Player player, String skillName, double amount) {
+        if (player == null || skillName == null || !Double.isFinite(amount) || amount <= 0.0D) {
+            return;
+        }
+
+        skillConfigCache.skillConfig(skillName).ifPresent(config -> addRawExp(player, config, amount));
+    }
+
+    public void addRawExp(Player player, SkillConfig config, double amount) {
+        if (config.name() == null || config.name().isBlank() || !Double.isFinite(amount) || amount <= 0.0D) {
+            return;
+        }
+
+        SkillKey key = new SkillKey(player.getUniqueId(), normalize(config.name()));
+        CompletableFuture<PlayerSkillState> stateFuture = states.computeIfAbsent(key, unused -> loadState(key, config));
+        stateFuture.whenComplete((state, throwable) -> {
+            if (throwable != null) {
+                states.remove(key, stateFuture);
+                plugin.getLogger().log(Level.WARNING, "Failed to load level data for " + player.getName(), throwable);
+                return;
+            }
+
+            plugin.getServer().getScheduler().runTask(plugin, () -> {
+                Player onlinePlayer = plugin.getServer().getPlayer(player.getUniqueId());
+                if (onlinePlayer == null || !onlinePlayer.isOnline()) {
+                    return;
+                }
+                applyRawExp(onlinePlayer, config, amount, state);
+            });
+        });
+    }
+
+    public Optional<LevelSnapshot> cachedSnapshot(UUID uuid, String skillName) {
+        if (uuid == null || skillName == null) {
+            return Optional.empty();
+        }
+
+        Optional<SkillConfig> config = skillConfigCache.skillConfig(skillName);
+        if (config.isEmpty()) {
+            return Optional.empty();
+        }
+
+        SkillConfig skillConfig = config.get();
+        SkillKey key = new SkillKey(uuid, normalize(skillConfig.name()));
+        CompletableFuture<PlayerSkillState> stateFuture = states.computeIfAbsent(key, unused -> loadState(key, skillConfig));
+        if (!stateFuture.isDone()) {
+            return Optional.empty();
+        }
+        if (stateFuture.isCompletedExceptionally() || stateFuture.isCancelled()) {
+            states.remove(key, stateFuture);
+            return Optional.empty();
+        }
+
+        PlayerSkillState state = stateFuture.getNow(null);
+        return state == null ? Optional.empty() : Optional.of(snapshot(skillConfig, state));
+    }
+
+    public LevelSnapshot defaultSnapshot(SkillConfig config) {
+        int level = clamp(config.startLevel(), config.startLevel(), config.maxLevel());
+        double requiredExp = level >= config.maxLevel() ? 0.0D : requiredExp(level);
+        return new LevelSnapshot(
+                config.name(),
+                displayName(config),
+                level,
+                0.0D,
+                requiredExp,
+                config.maxLevel()
+        );
+    }
+
+    public double requiredExpForLevel(int level) {
+        return requiredExp(level);
+    }
+
     public void deliverEarnedRewards(Player player) {
         for (SkillConfig config : skillConfigCache.skillConfigs()) {
             if (config.name() == null || config.name().isBlank()) {
@@ -197,6 +271,14 @@ public final class LevelProgressService {
 
         double gainedExp = calculateExp(player.getUniqueId(), config, rule, comboTarget);
         if (gainedExp <= 0) {
+            return;
+        }
+
+        applyRawExp(player, config, gainedExp, state);
+    }
+
+    private void applyRawExp(Player player, SkillConfig config, double gainedExp, PlayerSkillState state) {
+        if (state.level() >= config.maxLevel() || !Double.isFinite(gainedExp) || gainedExp <= 0.0D) {
             return;
         }
 
@@ -445,8 +527,30 @@ public final class LevelProgressService {
         combos.entrySet().removeIf(entry -> now - entry.getValue().lastUpdated() > COMBO_TIMEOUT_MILLIS);
     }
 
+    private LevelSnapshot snapshot(SkillConfig config, PlayerSkillState state) {
+        synchronized (state) {
+            int level = state.level();
+            double exp = state.exp();
+            double requiredExp = level >= config.maxLevel() ? 0.0D : requiredExp(level);
+            return new LevelSnapshot(
+                    config.name(),
+                    displayName(config),
+                    level,
+                    exp,
+                    requiredExp,
+                    config.maxLevel()
+            );
+        }
+    }
+
     private double requiredExp(int level) {
         return 100.0D + (Math.max(0, level) * 50.0D);
+    }
+
+    private String displayName(SkillConfig config) {
+        return config.displayName() == null || config.displayName().isBlank()
+                ? config.name()
+                : ChatColor.stripColor(color(config.displayName()));
     }
 
     private String color(String value) {
@@ -459,6 +563,25 @@ public final class LevelProgressService {
 
     private int clamp(int value, int min, int max) {
         return Math.max(min, Math.min(max, value));
+    }
+
+    public record LevelSnapshot(
+            String skill,
+            String displayName,
+            int level,
+            double exp,
+            double requiredExp,
+            int maxLevel
+    ) {
+        public double progressPercent() {
+            if (level >= maxLevel) {
+                return 100.0D;
+            }
+            if (requiredExp <= 0.0D) {
+                return 0.0D;
+            }
+            return Math.max(0.0D, Math.min(100.0D, (exp / requiredExp) * 100.0D));
+        }
     }
 
     private record SkillKey(UUID uuid, String skill) {

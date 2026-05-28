@@ -6,10 +6,14 @@ plugins {
 repositories {
     mavenCentral()
     maven("https://repo.papermc.io/repository/maven-public/")
+    maven("https://repo.skriptlang.org/releases")
 }
 
 dependencies {
     compileOnly("io.papermc.paper:paper-api:26.1.2.build.+")
+    compileOnly("com.github.SkriptLang:Skript:2.15.2") {
+        isTransitive = false
+    }
 }
 
 java {

@@ -77,3 +77,55 @@ database.transaction(connection -> {
 ```
 
 Database files are stored under `plugins/DBManager/databases`.
+
+## Skript
+
+DBManager also registers Skript syntax when the Skript plugin is installed.
+
+Run SQL without parameters:
+
+```vb
+dbmanager execute "CREATE TABLE IF NOT EXISTS players (uuid TEXT PRIMARY KEY, name TEXT NOT NULL)" in database "rpg" named "create_players"
+```
+
+Run SQL with prepared statement parameters:
+
+```vb
+dbmanager execute "INSERT OR REPLACE INTO players(uuid, name) VALUES(?, ?)" in database "rpg" named "save_player" with parameters "%uuid of player%" and name of player
+```
+
+Run an async query:
+
+```vb
+dbmanager query "SELECT uuid, name FROM players" in database "rpg" named "load_players"
+```
+
+Handle completion:
+
+```vb
+on dbmanager database operation complete:
+    if dbmanager error is set:
+        broadcast "DB error: %dbmanager error%"
+        stop
+
+    if dbmanager operation id is "load_players":
+        loop dbmanager query rows:
+            broadcast loop-value
+```
+
+Available Skript expressions inside `on dbmanager database operation complete`:
+
+```vb
+dbmanager operation type
+dbmanager database name
+dbmanager operation id
+dbmanager query id
+dbmanager sql
+dbmanager query rows
+dbmanager result rows
+dbmanager row count
+dbmanager affected rows
+dbmanager error
+```
+
+Query rows are returned as JSON strings, one string per row.

@@ -1,6 +1,6 @@
 name: DBManager
-description: $description
-version: '${version}'
+description: Factory Plugin
+version: '1.0.0'
 
 main: com.drewdrew1.Main
 api-version: '26.1.2'

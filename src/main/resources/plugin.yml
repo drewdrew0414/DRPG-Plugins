@@ -2,8 +2,22 @@ name: commodity
 description: $description
 version: '${version}'
 
-main: com.drewdrew1.Main
+main: com.drewdrew1.commodity.CommodityPlugin
 api-version: '26.1.2'
-load: POSTWORLD
+load: STARTUP
+depend: [ DBManager ]
+softdepend: [ PlaceholderAPI, Skript ]
 
 authors: [ drewdrew1_ ]
+
+commands:
+  commodity:
+    description: RPG commodity management command
+    usage: /commodity
+    aliases: [ 재화, 재화관리 ]
+    permission: commodity.admin
+
+permissions:
+  commodity.admin:
+    description: Allows managing RPG commodities
+    default: op

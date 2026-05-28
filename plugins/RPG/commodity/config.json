@@ -1,0 +1,84 @@
+{
+  "database": {
+    "name": "rpg_commodity"
+  },
+  "offlineIncrease": {
+    "unitSeconds": 60,
+    "maxCatchupSeconds": 604800
+  },
+  "commodities": {
+    "money": {
+      "displayName": "돈",
+      "min": 0,
+      "max": 999999999,
+      "default": 0,
+      "offlineIncrease": 0,
+      "aliases": [
+        "돈",
+        "money",
+        "cash"
+      ]
+    },
+    "gems": {
+      "displayName": "보석",
+      "min": 0,
+      "max": 999999,
+      "default": 0,
+      "offlineIncrease": 0,
+      "aliases": [
+        "보석",
+        "gem",
+        "gems"
+      ]
+    },
+    "crystal": {
+      "displayName": "크리스탈",
+      "min": 0,
+      "max": 999999,
+      "default": 0,
+      "offlineIncrease": 0,
+      "aliases": [
+        "크리스탈",
+        "crystal",
+        "crystals"
+      ]
+    },
+    "village_contribution": {
+      "displayName": "마을 기여도",
+      "min": 0,
+      "max": 1000000,
+      "default": 0,
+      "offlineIncrease": 0,
+      "aliases": [
+        "마을기여도",
+        "마을_기여도",
+        "village",
+        "village_contribution"
+      ]
+    },
+    "guild_contribution": {
+      "displayName": "길드 기여도",
+      "min": 0,
+      "max": 1000000,
+      "default": 0,
+      "offlineIncrease": 0,
+      "aliases": [
+        "길드기여도",
+        "길드_기여도",
+        "guild",
+        "guild_contribution"
+      ]
+    },
+    "energy": {
+      "displayName": "에너지",
+      "min": 0,
+      "max": 100,
+      "default": 100,
+      "offlineIncrease": 1,
+      "aliases": [
+        "에너지",
+        "energy"
+      ]
+    }
+  }
+}

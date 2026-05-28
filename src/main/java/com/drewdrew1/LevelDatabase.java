@@ -38,6 +38,16 @@ public final class LevelDatabase {
                 Migration.sql(3, "index player levels by skill", """
                         CREATE INDEX IF NOT EXISTS idx_player_levels_skill_level
                         ON player_levels(skill, level);
+                        """),
+                Migration.sql(4, "create player placed blocks table", """
+                        CREATE TABLE IF NOT EXISTS player_placed_blocks (
+                            world TEXT NOT NULL,
+                            x INTEGER NOT NULL,
+                            y INTEGER NOT NULL,
+                            z INTEGER NOT NULL,
+                            placed_at INTEGER NOT NULL DEFAULT (CAST(strftime('%s','now') AS INTEGER)),
+                            PRIMARY KEY (world, x, y, z)
+                        );
                         """)
         ));
     }
@@ -113,5 +123,53 @@ public final class LevelDatabase {
                 },
                 resultSet -> true
         ).thenApply(Optional::isPresent);
+    }
+
+    public CompletableFuture<List<PlacedBlock>> loadPlacedBlocks() {
+        return database.query(
+                """
+                        SELECT world, x, y, z
+                        FROM player_placed_blocks
+                        """,
+                resultSet -> new PlacedBlock(
+                        UUID.fromString(resultSet.getString("world")),
+                        resultSet.getInt("x"),
+                        resultSet.getInt("y"),
+                        resultSet.getInt("z")
+                )
+        );
+    }
+
+    public CompletableFuture<Void> savePlacedBlock(UUID world, int x, int y, int z) {
+        return database.update(
+                """
+                        INSERT OR IGNORE INTO player_placed_blocks(world, x, y, z, placed_at)
+                        VALUES(?, ?, ?, ?, CAST(strftime('%s','now') AS INTEGER))
+                        """,
+                statement -> {
+                    statement.setString(1, world.toString());
+                    statement.setInt(2, x);
+                    statement.setInt(3, y);
+                    statement.setInt(4, z);
+                }
+        ).thenApply(updatedRows -> null);
+    }
+
+    public CompletableFuture<Void> deletePlacedBlock(UUID world, int x, int y, int z) {
+        return database.update(
+                """
+                        DELETE FROM player_placed_blocks
+                        WHERE world = ? AND x = ? AND y = ? AND z = ?
+                        """,
+                statement -> {
+                    statement.setString(1, world.toString());
+                    statement.setInt(2, x);
+                    statement.setInt(3, y);
+                    statement.setInt(4, z);
+                }
+        ).thenApply(updatedRows -> null);
+    }
+
+    public record PlacedBlock(UUID world, int x, int y, int z) {
     }
 }

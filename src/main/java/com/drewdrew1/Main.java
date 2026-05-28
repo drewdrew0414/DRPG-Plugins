@@ -6,6 +6,7 @@ import com.drewdrew1.config.SkillConfigCache;
 import com.drewdrew1.listener.LevelEventListener;
 import com.drewdrew1.progress.LevelProgressService;
 import com.drewdrew1.command.LevelSystemCommand;
+import com.drewdrew1.progress.PlacedBlockTracker;
 import com.google.gson.JsonParseException;
 import java.io.IOException;
 import java.util.Objects;
@@ -20,6 +21,7 @@ public final class Main extends JavaPlugin {
     private LevelDatabase levelDatabase;
     private SkillConfigCache skillConfigCache;
     private LevelProgressService levelProgressService;
+    private PlacedBlockTracker placedBlockTracker;
 
     @Override
     public void onEnable() {
@@ -35,8 +37,13 @@ public final class Main extends JavaPlugin {
             levelDatabase.migrate().join();
             getLogger().info("Connected to DBManager database: " + database.path());
 
+            placedBlockTracker = new PlacedBlockTracker(this, levelDatabase);
+            placedBlockTracker.load().join();
             levelProgressService = new LevelProgressService(this, levelDatabase, skillConfigCache);
-            getServer().getPluginManager().registerEvents(new LevelEventListener(this, levelProgressService), this);
+            getServer().getPluginManager().registerEvents(
+                    new LevelEventListener(this, levelProgressService, placedBlockTracker),
+                    this
+            );
             LevelSystemCommand command = new LevelSystemCommand(this);
             PluginCommand pluginCommand = Objects.requireNonNull(getCommand("levelSystem"), "levelSystem command");
             pluginCommand.setExecutor(command);
@@ -60,19 +67,33 @@ public final class Main extends JavaPlugin {
     public void onDisable() {
         if (levelProgressService != null) {
             try {
-                levelProgressService.flush().join();
+                levelProgressService.shutdown().join();
             } catch (CompletionException exception) {
                 getLogger().log(Level.WARNING, "Failed to flush level progress before shutdown.", exception);
             }
         }
+        if (placedBlockTracker != null) {
+            try {
+                placedBlockTracker.flush().join();
+            } catch (CompletionException exception) {
+                getLogger().log(Level.WARNING, "Failed to flush placed block state before shutdown.", exception);
+            }
+        }
+        placedBlockTracker = null;
         levelProgressService = null;
         skillConfigCache = null;
         levelDatabase = null;
     }
 
     public void reloadSkillConfigs() throws IOException {
+        if (levelProgressService != null) {
+            levelProgressService.flush().join();
+        }
         skillConfigCache().copyDefaultsIfMissing();
         skillConfigCache().reload();
+        if (levelProgressService != null) {
+            levelProgressService.clearMemoryCache();
+        }
     }
 
     public LevelProgressService levelProgressService() {

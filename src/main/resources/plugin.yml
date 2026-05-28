@@ -1,0 +1,9 @@
+name: DBManager
+description: $description
+version: '${version}'
+
+main: com.drewdrew1.Main
+api-version: '26.1.2'
+load: STARTUP
+
+authors: [ drewdrew1_ ]

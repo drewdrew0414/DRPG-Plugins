@@ -1,0 +1,9 @@
+name: commodity
+description: $description
+version: '${version}'
+
+main: com.drewdrew1.Main
+api-version: '26.1.2'
+load: POSTWORLD
+
+authors: [ drewdrew1_ ]

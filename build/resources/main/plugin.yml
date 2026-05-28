@@ -1,0 +1,25 @@
+name: storageGuild
+description: Factory Plugin
+version: '1.0.0'
+
+main: com.drewdrew1.Main
+api-version: '26.1.2'
+load: POSTWORLD
+depend: [ DBManager ]
+
+authors: [ drewdrew1_ ]
+
+commands:
+  storage:
+    description: Open personal or guild storage.
+    aliases: [ 창고 ]
+    usage: /storage [personal|guild|expand|ticket]
+  guild:
+    description: Manage guilds.
+    aliases: [ 길드 ]
+    usage: /guild <create|invite|accept|list|storage>
+
+permissions:
+  storageguild.admin:
+    description: Allows issuing storage and guild tickets.
+    default: op

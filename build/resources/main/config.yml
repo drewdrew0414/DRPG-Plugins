@@ -1,0 +1,11 @@
+storage:
+  default-slots: 9
+  slots-per-expansion: 9
+  gui-size: 54
+  # The bottom row is used for page controls, so usable item slots per page default to 45.
+  page-item-slots: 45
+  max-pages: 20
+
+guild:
+  invite-expire-minutes: 10
+  max-name-length: 16

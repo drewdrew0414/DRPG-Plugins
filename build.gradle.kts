@@ -1,0 +1,39 @@
+plugins {
+    id("java-library")
+    id("xyz.jpenilla.run-paper") version "3.0.2"
+}
+
+repositories {
+    mavenCentral()
+    maven("https://repo.papermc.io/repository/maven-public/")
+    maven("https://repo.helpch.at/releases/")
+    maven("https://repo.skriptlang.org/releases/")
+}
+
+dependencies {
+    compileOnly("io.papermc.paper:paper-api:26.1.2.build.+")
+    compileOnly("me.clip:placeholderapi:2.12.2")
+    compileOnly("com.github.SkriptLang:Skript:2.15.2")
+    compileOnly(files("libs/DBManager-1.0.0.jar"))
+}
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(25)
+}
+
+tasks {
+    runServer {
+        // Configure the Minecraft version for our task.
+        // This is the only required configuration besides applying the plugin.
+        // Your plugin's jar (or shadowJar if present) will be used automatically.
+        minecraftVersion("26.1.2")
+        jvmArgs("-Xms2G", "-Xmx2G")
+    }
+
+    processResources {
+        val props = mapOf("version" to version, "description" to project.description)
+        filesMatching("plugin.yml") {
+            expand(props)
+        }
+    }
+}

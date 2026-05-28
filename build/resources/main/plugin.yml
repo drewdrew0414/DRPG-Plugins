@@ -1,9 +1,0 @@
-name: DBManager
-description: Factory Plugin
-version: '1.0.0'
-
-main: com.drewdrew1.Main
-api-version: '26.1.2'
-load: STARTUP
-
-authors: [ drewdrew1_ ]

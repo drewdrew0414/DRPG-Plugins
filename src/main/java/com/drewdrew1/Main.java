@@ -2,34 +2,91 @@ package com.drewdrew1;
 
 import com.drewdrew1.api.Database;
 import com.drewdrew1.api.DatabaseService;
+import com.drewdrew1.config.SkillConfigCache;
+import com.drewdrew1.listener.LevelEventListener;
+import com.drewdrew1.progress.LevelProgressService;
+import com.drewdrew1.command.LevelSystemCommand;
+import com.google.gson.JsonParseException;
+import java.io.IOException;
+import java.util.Objects;
 import java.util.concurrent.CompletionException;
 import java.util.logging.Level;
 import org.bukkit.Bukkit;
+import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Main extends JavaPlugin {
     private LevelDatabase levelDatabase;
+    private SkillConfigCache skillConfigCache;
+    private LevelProgressService levelProgressService;
 
     @Override
     public void onEnable() {
         try {
+            skillConfigCache = new SkillConfigCache(this);
+            skillConfigCache.copyDefaultsIfMissing();
+            skillConfigCache.reload();
+            getLogger().info("Loaded " + skillConfigCache.skillConfigs().size()
+                    + " level JSON configs from " + skillConfigCache.jsonDirectory());
+
             Database database = loadDatabase();
             levelDatabase = new LevelDatabase(database);
             levelDatabase.migrate().join();
             getLogger().info("Connected to DBManager database: " + database.path());
+
+            levelProgressService = new LevelProgressService(this, levelDatabase, skillConfigCache);
+            getServer().getPluginManager().registerEvents(new LevelEventListener(this, levelProgressService), this);
+            LevelSystemCommand command = new LevelSystemCommand(this);
+            PluginCommand pluginCommand = Objects.requireNonNull(getCommand("levelSystem"), "levelSystem command");
+            pluginCommand.setExecutor(command);
+            pluginCommand.setTabCompleter(command);
+        } catch (IOException exception) {
+            getLogger().log(Level.SEVERE, "Level JSON initialization failed.", exception);
+            Bukkit.getPluginManager().disablePlugin(this);
+        } catch (JsonParseException exception) {
+            getLogger().log(Level.SEVERE, "Level JSON parsing failed.", exception);
+            Bukkit.getPluginManager().disablePlugin(this);
         } catch (IllegalStateException | CompletionException exception) {
             Throwable cause = exception instanceof CompletionException && exception.getCause() != null
                     ? exception.getCause()
                     : exception;
-            getLogger().log(Level.SEVERE, "DBManager database initialization failed.", cause);
+            getLogger().log(Level.SEVERE, "Plugin initialization failed.", cause);
             Bukkit.getPluginManager().disablePlugin(this);
         }
     }
 
     @Override
     public void onDisable() {
+        if (levelProgressService != null) {
+            try {
+                levelProgressService.flush().join();
+            } catch (CompletionException exception) {
+                getLogger().log(Level.WARNING, "Failed to flush level progress before shutdown.", exception);
+            }
+        }
+        levelProgressService = null;
+        skillConfigCache = null;
         levelDatabase = null;
+    }
+
+    public void reloadSkillConfigs() throws IOException {
+        skillConfigCache().copyDefaultsIfMissing();
+        skillConfigCache().reload();
+    }
+
+    public LevelProgressService levelProgressService() {
+        if (levelProgressService == null) {
+            throw new IllegalStateException("Level progress service is not initialized.");
+        }
+        return levelProgressService;
+    }
+
+    public SkillConfigCache skillConfigCache() {
+        if (skillConfigCache == null) {
+            throw new IllegalStateException("Skill config cache is not initialized.");
+        }
+        return skillConfigCache;
     }
 
     public LevelDatabase levelDatabase() {

@@ -3,353 +3,785 @@
   "displayName": "광질",
   "startLevel": 0,
   "maxLevel": 100,
-  "multipleExp": 1.0,
-  "getExp": [{
+  "multipleExp": 1,
+  "getExp": [
+    {
       "breakBlock": [
         {
-          "block": ["STONE", "DEEPSLATE"],
-          "useTool": ["PICKAXE"],
-          "getExp": [{"max": 3, "min": 1}],
-          "bonusExp": [{"max": 1.2, "min": 1.0, "chance": 0.5}],
+          "block": [
+            "STONE",
+            "DEEPSLATE"
+          ],
+          "useTool": [
+            "PICKAXE"
+          ],
+          "getExp": [
+            {
+              "max": 3,
+              "min": 1
+            }
+          ],
+          "bonusExp": [
+            {
+              "max": 1.15,
+              "min": 1,
+              "chance": 0.35
+            }
+          ],
           "requiredLevel": 0,
           "requiredEnchant": [],
-          "world": ["OVERWORLD"],
+          "world": [
+            "OVERWORLD"
+          ],
           "biome": [],
           "combo": [
-            {"count": 10, "multiply": 1.1},
-            {"count": 30, "multiply": 1.2},
-            {"count": 50, "multiply": 1.3},
-            {"count": 100, "multiply": 1.5},
-            {"count": 200, "multiply": 1.7}
+            {
+              "count": 10,
+              "multiply": 1.08
+            },
+            {
+              "count": 30,
+              "multiply": 1.18
+            },
+            {
+              "count": 80,
+              "multiply": 1.35
+            },
+            {
+              "count": 160,
+              "multiply": 1.55
+            }
           ],
           "placedByPlayer": false
         },
         {
-          "block": ["GRANITE", "DIORITE", "ANDESITE", "TUFF", "CALCITE"],
-          "useTool": ["PICKAXE"],
-          "getExp": [{"max": 2, "min": 1}],
-          "bonusExp": [{"max": 1.1, "min": 1.0, "chance": 0.3}],
+          "block": [
+            "GRANITE",
+            "DIORITE",
+            "ANDESITE",
+            "TUFF",
+            "CALCITE"
+          ],
+          "useTool": [
+            "PICKAXE"
+          ],
+          "getExp": [
+            {
+              "max": 3,
+              "min": 1
+            }
+          ],
+          "bonusExp": [
+            {
+              "max": 1.12,
+              "min": 1,
+              "chance": 0.3
+            }
+          ],
           "requiredLevel": 0,
           "requiredEnchant": [],
-          "world": ["OVERWORLD"],
+          "world": [
+            "OVERWORLD"
+          ],
           "biome": [],
           "combo": [
-            {"count": 10, "multiply": 1.1},
-            {"count": 30, "multiply": 1.2},
-            {"count": 50, "multiply": 1.3},
-            {"count": 100, "multiply": 1.5},
-            {"count": 200, "multiply": 1.7}
+            {
+              "count": 12,
+              "multiply": 1.08
+            },
+            {
+              "count": 40,
+              "multiply": 1.18
+            },
+            {
+              "count": 100,
+              "multiply": 1.35
+            }
           ],
           "placedByPlayer": false
         },
         {
-          "block": ["COAL_ORE", "DEEPSLATE_COAL_ORE"],
-          "useTool": ["PICKAXE"],
-          "getExp": [{"max": 5, "min": 2}],
-          "bonusExp": [{"max": 1.3, "min": 1.0, "chance": 0.4}],
+          "block": [
+            "COAL_ORE",
+            "DEEPSLATE_COAL_ORE"
+          ],
+          "useTool": [
+            "PICKAXE"
+          ],
+          "getExp": [
+            {
+              "max": 6,
+              "min": 2
+            }
+          ],
+          "bonusExp": [
+            {
+              "max": 1.25,
+              "min": 1,
+              "chance": 0.4
+            }
+          ],
           "requiredLevel": 0,
           "requiredEnchant": [],
-          "world": ["OVERWORLD"],
+          "world": [
+            "OVERWORLD"
+          ],
           "biome": [],
           "combo": [
-            {"count": 8, "multiply": 1.15},
-            {"count": 20, "multiply": 1.25},
-            {"count": 40, "multiply": 1.4},
-            {"count": 80, "multiply": 1.6},
-            {"count": 150, "multiply": 1.8}
+            {
+              "count": 8,
+              "multiply": 1.12
+            },
+            {
+              "count": 24,
+              "multiply": 1.25
+            },
+            {
+              "count": 60,
+              "multiply": 1.45
+            },
+            {
+              "count": 120,
+              "multiply": 1.7
+            }
           ],
           "placedByPlayer": false
         },
         {
-          "block": ["COPPER_ORE", "DEEPSLATE_COPPER_ORE"],
-          "useTool": ["PICKAXE"],
-          "getExp": [{"max": 6, "min": 3}],
-          "bonusExp": [{"max": 1.3, "min": 1.0, "chance": 0.4}],
+          "block": [
+            "COPPER_ORE",
+            "DEEPSLATE_COPPER_ORE"
+          ],
+          "useTool": [
+            "PICKAXE"
+          ],
+          "getExp": [
+            {
+              "max": 7,
+              "min": 3
+            }
+          ],
+          "bonusExp": [
+            {
+              "max": 1.28,
+              "min": 1,
+              "chance": 0.4
+            }
+          ],
           "requiredLevel": 5,
           "requiredEnchant": [],
-          "world": ["OVERWORLD"],
+          "world": [
+            "OVERWORLD"
+          ],
           "biome": [],
           "combo": [
-            {"count": 8, "multiply": 1.15},
-            {"count": 20, "multiply": 1.25},
-            {"count": 40, "multiply": 1.4},
-            {"count": 80, "multiply": 1.6},
-            {"count": 150, "multiply": 1.8}
+            {
+              "count": 8,
+              "multiply": 1.12
+            },
+            {
+              "count": 24,
+              "multiply": 1.25
+            },
+            {
+              "count": 60,
+              "multiply": 1.45
+            },
+            {
+              "count": 120,
+              "multiply": 1.7
+            }
           ],
           "placedByPlayer": false
         },
         {
-          "block": ["IRON_ORE", "DEEPSLATE_IRON_ORE"],
-          "useTool": ["PICKAXE"],
-          "getExp": [{"max": 8, "min": 4}],
-          "bonusExp": [{"max": 1.4, "min": 1.0, "chance": 0.4}],
+          "block": [
+            "IRON_ORE",
+            "DEEPSLATE_IRON_ORE"
+          ],
+          "useTool": [
+            "PICKAXE"
+          ],
+          "getExp": [
+            {
+              "max": 9,
+              "min": 4
+            }
+          ],
+          "bonusExp": [
+            {
+              "max": 1.35,
+              "min": 1,
+              "chance": 0.45
+            }
+          ],
           "requiredLevel": 10,
           "requiredEnchant": [],
-          "world": ["OVERWORLD"],
+          "world": [
+            "OVERWORLD"
+          ],
           "biome": [],
           "combo": [
-            {"count": 6, "multiply": 1.2},
-            {"count": 15, "multiply": 1.3},
-            {"count": 30, "multiply": 1.5},
-            {"count": 60, "multiply": 1.7},
-            {"count": 100, "multiply": 2.0}
+            {
+              "count": 6,
+              "multiply": 1.15
+            },
+            {
+              "count": 18,
+              "multiply": 1.3
+            },
+            {
+              "count": 45,
+              "multiply": 1.55
+            },
+            {
+              "count": 90,
+              "multiply": 1.85
+            }
           ],
           "placedByPlayer": false
         },
         {
-          "block": ["LAPIS_ORE", "DEEPSLATE_LAPIS_ORE"],
-          "useTool": ["PICKAXE"],
-          "getExp": [{"max": 10, "min": 5}],
-          "bonusExp": [{"max": 1.4, "min": 1.0, "chance": 0.45}],
+          "block": [
+            "LAPIS_ORE",
+            "DEEPSLATE_LAPIS_ORE",
+            "REDSTONE_ORE",
+            "DEEPSLATE_REDSTONE_ORE"
+          ],
+          "useTool": [
+            "PICKAXE"
+          ],
+          "getExp": [
+            {
+              "max": 12,
+              "min": 5
+            }
+          ],
+          "bonusExp": [
+            {
+              "max": 1.42,
+              "min": 1,
+              "chance": 0.45
+            }
+          ],
           "requiredLevel": 15,
           "requiredEnchant": [],
-          "world": ["OVERWORLD"],
+          "world": [
+            "OVERWORLD"
+          ],
           "biome": [],
           "combo": [
-            {"count": 6, "multiply": 1.2},
-            {"count": 15, "multiply": 1.3},
-            {"count": 30, "multiply": 1.5},
-            {"count": 60, "multiply": 1.7},
-            {"count": 100, "multiply": 2.0}
+            {
+              "count": 6,
+              "multiply": 1.15
+            },
+            {
+              "count": 18,
+              "multiply": 1.35
+            },
+            {
+              "count": 45,
+              "multiply": 1.6
+            },
+            {
+              "count": 90,
+              "multiply": 1.9
+            }
           ],
           "placedByPlayer": false
         },
         {
-          "block": ["GOLD_ORE", "DEEPSLATE_GOLD_ORE"],
-          "useTool": ["PICKAXE"],
-          "getExp": [{"max": 12, "min": 6}],
-          "bonusExp": [{"max": 1.5, "min": 1.0, "chance": 0.45}],
+          "block": [
+            "GOLD_ORE",
+            "DEEPSLATE_GOLD_ORE"
+          ],
+          "useTool": [
+            "PICKAXE"
+          ],
+          "getExp": [
+            {
+              "max": 15,
+              "min": 7
+            }
+          ],
+          "bonusExp": [
+            {
+              "max": 1.5,
+              "min": 1,
+              "chance": 0.5
+            }
+          ],
           "requiredLevel": 20,
           "requiredEnchant": [],
-          "world": ["OVERWORLD"],
+          "world": [
+            "OVERWORLD"
+          ],
           "biome": [],
           "combo": [
-            {"count": 5, "multiply": 1.25},
-            {"count": 12, "multiply": 1.4},
-            {"count": 20, "multiply": 1.6},
-            {"count": 40, "multiply": 1.8},
-            {"count": 70, "multiply": 2.2}
+            {
+              "count": 5,
+              "multiply": 1.2
+            },
+            {
+              "count": 15,
+              "multiply": 1.45
+            },
+            {
+              "count": 35,
+              "multiply": 1.75
+            },
+            {
+              "count": 70,
+              "multiply": 2.05
+            }
           ],
           "placedByPlayer": false
         },
         {
-          "block": ["REDSTONE_ORE", "DEEPSLATE_REDSTONE_ORE"],
-          "useTool": ["PICKAXE"],
-          "getExp": [{"max": 10, "min": 5}],
-          "bonusExp": [{"max": 1.4, "min": 1.0, "chance": 0.45}],
-          "requiredLevel": 20,
-          "requiredEnchant": [],
-          "world": ["OVERWORLD"],
-          "biome": [],
-          "combo": [
-            {"count": 6, "multiply": 1.2},
-            {"count": 15, "multiply": 1.3},
-            {"count": 30, "multiply": 1.5},
-            {"count": 60, "multiply": 1.7},
-            {"count": 100, "multiply": 2.0}
+          "block": [
+            "DIAMOND_ORE",
+            "DEEPSLATE_DIAMOND_ORE"
           ],
-          "placedByPlayer": false
-        },
-        {
-          "block": ["DIAMOND_ORE", "DEEPSLATE_DIAMOND_ORE"],
-          "useTool": ["PICKAXE"],
-          "getExp": [{"max": 20, "min": 10}],
-          "bonusExp": [{"max": 1.7, "min": 1.0, "chance": 0.5}],
+          "useTool": [
+            "PICKAXE"
+          ],
+          "getExp": [
+            {
+              "max": 24,
+              "min": 12
+            }
+          ],
+          "bonusExp": [
+            {
+              "max": 1.7,
+              "min": 1,
+              "chance": 0.55
+            }
+          ],
           "requiredLevel": 30,
           "requiredEnchant": [],
-          "world": ["OVERWORLD"],
+          "world": [
+            "OVERWORLD"
+          ],
           "biome": [],
           "combo": [
-            {"count": 5, "multiply": 1.25},
-            {"count": 12, "multiply": 1.4},
-            {"count": 20, "multiply": 1.6},
-            {"count": 40, "multiply": 1.8},
-            {"count": 70, "multiply": 2.2}
+            {
+              "count": 4,
+              "multiply": 1.25
+            },
+            {
+              "count": 10,
+              "multiply": 1.55
+            },
+            {
+              "count": 24,
+              "multiply": 1.9
+            },
+            {
+              "count": 50,
+              "multiply": 2.3
+            }
           ],
           "placedByPlayer": false
         },
         {
-          "block": ["EMERALD_ORE", "DEEPSLATE_EMERALD_ORE"],
-          "useTool": ["PICKAXE"],
-          "getExp": [{"max": 22, "min": 12}],
-          "bonusExp": [{"max": 1.8, "min": 1.0, "chance": 0.5}],
+          "block": [
+            "EMERALD_ORE",
+            "DEEPSLATE_EMERALD_ORE"
+          ],
+          "useTool": [
+            "PICKAXE"
+          ],
+          "getExp": [
+            {
+              "max": 28,
+              "min": 14
+            }
+          ],
+          "bonusExp": [
+            {
+              "max": 1.8,
+              "min": 1,
+              "chance": 0.55
+            }
+          ],
           "requiredLevel": 35,
           "requiredEnchant": [],
-          "world": ["OVERWORLD"],
+          "world": [
+            "OVERWORLD"
+          ],
           "biome": [],
           "combo": [
-            {"count": 5, "multiply": 1.25},
-            {"count": 12, "multiply": 1.4},
-            {"count": 20, "multiply": 1.6},
-            {"count": 40, "multiply": 1.8},
-            {"count": 70, "multiply": 2.2}
+            {
+              "count": 4,
+              "multiply": 1.25
+            },
+            {
+              "count": 10,
+              "multiply": 1.55
+            },
+            {
+              "count": 24,
+              "multiply": 1.9
+            },
+            {
+              "count": 50,
+              "multiply": 2.3
+            }
           ],
           "placedByPlayer": false
         },
         {
-          "block": ["AMETHYST_CLUSTER"],
-          "useTool": ["PICKAXE"],
-          "getExp": [{"max": 7, "min": 3}],
-          "bonusExp": [{"max": 1.3, "min": 1.0, "chance": 0.4}],
+          "block": [
+            "AMETHYST_CLUSTER"
+          ],
+          "useTool": [
+            "PICKAXE"
+          ],
+          "getExp": [
+            {
+              "max": 10,
+              "min": 4
+            }
+          ],
+          "bonusExp": [
+            {
+              "max": 1.35,
+              "min": 1,
+              "chance": 0.42
+            }
+          ],
           "requiredLevel": 10,
           "requiredEnchant": [],
-          "world": ["OVERWORLD"],
+          "world": [
+            "OVERWORLD"
+          ],
           "biome": [],
           "combo": [
-            {"count": 8, "multiply": 1.15},
-            {"count": 20, "multiply": 1.25},
-            {"count": 40, "multiply": 1.4},
-            {"count": 80, "multiply": 1.6},
-            {"count": 150, "multiply": 1.8}
+            {
+              "count": 6,
+              "multiply": 1.15
+            },
+            {
+              "count": 20,
+              "multiply": 1.35
+            },
+            {
+              "count": 50,
+              "multiply": 1.65
+            }
           ],
           "placedByPlayer": false
         },
         {
-          "block": ["OBSIDIAN"],
-          "useTool": ["PICKAXE"],
-          "getExp": [{"max": 15, "min": 8}],
-          "bonusExp": [{"max": 1.5, "min": 1.0, "chance": 0.5}],
+          "block": [
+            "OBSIDIAN",
+            "CRYING_OBSIDIAN"
+          ],
+          "useTool": [
+            "PICKAXE"
+          ],
+          "getExp": [
+            {
+              "max": 20,
+              "min": 10
+            }
+          ],
+          "bonusExp": [
+            {
+              "max": 1.55,
+              "min": 1,
+              "chance": 0.5
+            }
+          ],
           "requiredLevel": 25,
           "requiredEnchant": [],
-          "world": ["OVERWORLD", "NETHER", "THE_END"],
+          "world": [
+            "OVERWORLD",
+            "NETHER",
+            "THE_END"
+          ],
           "biome": [],
           "combo": [
-            {"count": 5, "multiply": 1.25},
-            {"count": 12, "multiply": 1.4},
-            {"count": 20, "multiply": 1.6},
-            {"count": 40, "multiply": 1.8},
-            {"count": 70, "multiply": 2.2}
+            {
+              "count": 3,
+              "multiply": 1.2
+            },
+            {
+              "count": 8,
+              "multiply": 1.45
+            },
+            {
+              "count": 20,
+              "multiply": 1.8
+            }
           ],
           "placedByPlayer": false
         },
         {
-          "block": ["NETHERRACK"],
-          "useTool": ["PICKAXE"],
-          "getExp": [{"max": 2, "min": 1}],
-          "bonusExp": [{"max": 1.1, "min": 1.0, "chance": 0.3}],
+          "block": [
+            "NETHERRACK",
+            "BASALT",
+            "BLACKSTONE"
+          ],
+          "useTool": [
+            "PICKAXE"
+          ],
+          "getExp": [
+            {
+              "max": 4,
+              "min": 1
+            }
+          ],
+          "bonusExp": [
+            {
+              "max": 1.18,
+              "min": 1,
+              "chance": 0.35
+            }
+          ],
           "requiredLevel": 0,
           "requiredEnchant": [],
-          "world": ["NETHER"],
+          "world": [
+            "NETHER"
+          ],
           "biome": [],
           "combo": [
-            {"count": 10, "multiply": 1.1},
-            {"count": 30, "multiply": 1.2},
-            {"count": 50, "multiply": 1.3},
-            {"count": 100, "multiply": 1.5},
-            {"count": 200, "multiply": 1.7}
+            {
+              "count": 15,
+              "multiply": 1.1
+            },
+            {
+              "count": 45,
+              "multiply": 1.25
+            },
+            {
+              "count": 120,
+              "multiply": 1.5
+            }
           ],
           "placedByPlayer": false
         },
         {
-          "block": ["BASALT", "BLACKSTONE"],
-          "useTool": ["PICKAXE"],
-          "getExp": [{"max": 3, "min": 1}],
-          "bonusExp": [{"max": 1.2, "min": 1.0, "chance": 0.35}],
-          "requiredLevel": 5,
-          "requiredEnchant": [],
-          "world": ["NETHER"],
-          "biome": [],
-          "combo": [
-            {"count": 10, "multiply": 1.1},
-            {"count": 30, "multiply": 1.2},
-            {"count": 50, "multiply": 1.3},
-            {"count": 100, "multiply": 1.5},
-            {"count": 200, "multiply": 1.7}
+          "block": [
+            "NETHER_QUARTZ_ORE",
+            "NETHER_GOLD_ORE"
           ],
-          "placedByPlayer": false
-        },
-        {
-          "block": ["NETHER_QUARTZ_ORE"],
-          "useTool": ["PICKAXE"],
-          "getExp": [{"max": 8, "min": 4}],
-          "bonusExp": [{"max": 1.4, "min": 1.0, "chance": 0.45}],
+          "useTool": [
+            "PICKAXE"
+          ],
+          "getExp": [
+            {
+              "max": 12,
+              "min": 5
+            }
+          ],
+          "bonusExp": [
+            {
+              "max": 1.45,
+              "min": 1,
+              "chance": 0.48
+            }
+          ],
           "requiredLevel": 15,
           "requiredEnchant": [],
-          "world": ["NETHER"],
+          "world": [
+            "NETHER"
+          ],
           "biome": [],
           "combo": [
-            {"count": 6, "multiply": 1.2},
-            {"count": 15, "multiply": 1.3},
-            {"count": 30, "multiply": 1.5},
-            {"count": 60, "multiply": 1.7},
-            {"count": 100, "multiply": 2.0}
+            {
+              "count": 6,
+              "multiply": 1.18
+            },
+            {
+              "count": 18,
+              "multiply": 1.38
+            },
+            {
+              "count": 45,
+              "multiply": 1.7
+            }
           ],
           "placedByPlayer": false
         },
         {
-          "block": ["NETHER_GOLD_ORE"],
-          "useTool": ["PICKAXE"],
-          "getExp": [{"max": 10, "min": 5}],
-          "bonusExp": [{"max": 1.5, "min": 1.0, "chance": 0.45}],
-          "requiredLevel": 20,
-          "requiredEnchant": [],
-          "world": ["NETHER"],
-          "biome": [],
-          "combo": [
-            {"count": 6, "multiply": 1.2},
-            {"count": 15, "multiply": 1.3},
-            {"count": 30, "multiply": 1.5},
-            {"count": 60, "multiply": 1.7},
-            {"count": 100, "multiply": 2.0}
+          "block": [
+            "GLOWSTONE"
           ],
-          "placedByPlayer": false
-        },
-        {
-          "block": ["GLOWSTONE"],
-          "useTool": ["PICKAXE"],
-          "getExp": [{"max": 6, "min": 3}],
-          "bonusExp": [{"max": 1.3, "min": 1.0, "chance": 0.4}],
+          "useTool": [
+            "PICKAXE"
+          ],
+          "getExp": [
+            {
+              "max": 9,
+              "min": 4
+            }
+          ],
+          "bonusExp": [
+            {
+              "max": 1.35,
+              "min": 1,
+              "chance": 0.42
+            }
+          ],
           "requiredLevel": 10,
           "requiredEnchant": [],
-          "world": ["NETHER"],
+          "world": [
+            "NETHER"
+          ],
           "biome": [],
           "combo": [
-            {"count": 8, "multiply": 1.15},
-            {"count": 20, "multiply": 1.25},
-            {"count": 40, "multiply": 1.4},
-            {"count": 80, "multiply": 1.6},
-            {"count": 150, "multiply": 1.8}
+            {
+              "count": 8,
+              "multiply": 1.15
+            },
+            {
+              "count": 20,
+              "multiply": 1.35
+            },
+            {
+              "count": 50,
+              "multiply": 1.65
+            }
           ],
           "placedByPlayer": false
         },
         {
-          "block": ["ANCIENT_DEBRIS"],
-          "useTool": ["PICKAXE"],
-          "getExp": [{"max": 40, "min": 20}],
-          "bonusExp": [{"max": 2.0, "min": 1.0, "chance": 0.6}],
+          "block": [
+            "ANCIENT_DEBRIS"
+          ],
+          "useTool": [
+            "PICKAXE"
+          ],
+          "getExp": [
+            {
+              "max": 50,
+              "min": 25
+            }
+          ],
+          "bonusExp": [
+            {
+              "max": 2,
+              "min": 1,
+              "chance": 0.65
+            }
+          ],
           "requiredLevel": 50,
           "requiredEnchant": [],
-          "world": ["NETHER"],
+          "world": [
+            "NETHER"
+          ],
           "biome": [],
           "combo": [
-            {"count": 3, "multiply": 1.3},
-            {"count": 7, "multiply": 1.6},
-            {"count": 12, "multiply": 2.0},
-            {"count": 20, "multiply": 2.5},
-            {"count": 30, "multiply": 3.0}
+            {
+              "count": 2,
+              "multiply": 1.35
+            },
+            {
+              "count": 5,
+              "multiply": 1.75
+            },
+            {
+              "count": 10,
+              "multiply": 2.25
+            },
+            {
+              "count": 20,
+              "multiply": 3
+            }
           ],
           "placedByPlayer": false
         },
         {
-          "block": ["END_STONE"],
-          "useTool": ["PICKAXE"],
-          "getExp": [{"max": 5, "min": 2}],
-          "bonusExp": [{"max": 1.3, "min": 1.0, "chance": 0.4}],
+          "block": [
+            "END_STONE"
+          ],
+          "useTool": [
+            "PICKAXE"
+          ],
+          "getExp": [
+            {
+              "max": 8,
+              "min": 3
+            }
+          ],
+          "bonusExp": [
+            {
+              "max": 1.35,
+              "min": 1,
+              "chance": 0.42
+            }
+          ],
           "requiredLevel": 15,
           "requiredEnchant": [],
-          "world": ["THE_END"],
+          "world": [
+            "THE_END"
+          ],
           "biome": [],
           "combo": [
-            {"count": 10, "multiply": 1.1},
-            {"count": 30, "multiply": 1.2},
-            {"count": 50, "multiply": 1.3},
-            {"count": 100, "multiply": 1.5},
-            {"count": 200, "multiply": 1.7}
+            {
+              "count": 10,
+              "multiply": 1.12
+            },
+            {
+              "count": 30,
+              "multiply": 1.3
+            },
+            {
+              "count": 80,
+              "multiply": 1.6
+            }
+          ],
+          "placedByPlayer": false
+        },
+        {
+          "block": [
+            "SCULK",
+            "SCULK_CATALYST",
+            "SCULK_SHRIEKER"
+          ],
+          "useTool": [
+            "HOE"
+          ],
+          "getExp": [
+            {
+              "max": 30,
+              "min": 12
+            }
+          ],
+          "bonusExp": [
+            {
+              "max": 1.8,
+              "min": 1,
+              "chance": 0.55
+            }
+          ],
+          "requiredLevel": 45,
+          "requiredEnchant": [],
+          "world": [
+            "OVERWORLD"
+          ],
+          "biome": [],
+          "combo": [
+            {
+              "count": 3,
+              "multiply": 1.25
+            },
+            {
+              "count": 8,
+              "multiply": 1.6
+            },
+            {
+              "count": 18,
+              "multiply": 2.1
+            }
           ],
           "placedByPlayer": false
         }
       ]
-    }],
+    }
+  ],
   "getItem": [
     {
       "level": 5,
@@ -361,9 +793,18 @@
           "item": "STONE_PICKAXE",
           "amount": 1,
           "name": "&7견습 광부의 곡괭이",
-          "nbt": ["untradeable"],
-          "lore": ["&8광질을 시작한 자에게 주어지는 도구"],
-          "enchants": [{"enchant": "EFFICIENCY", "level": 1}]
+          "nbt": [
+            "untradeable"
+          ],
+          "lore": [
+            "&8광질을 시작한 자에게 주어지는 도구"
+          ],
+          "enchants": [
+            {
+              "enchant": "EFFICIENCY",
+              "level": 1
+            }
+          ]
         }
       ],
       "givePlayerExp": 0
@@ -374,18 +815,42 @@
       "randomItem": [
         {
           "id": 1,
-          "item": {"item": "COAL", "amount": 16, "name": null, "lore": [], "enchants": []}
+          "item": {
+            "item": "COAL",
+            "amount": 16,
+            "name": null,
+            "lore": [],
+            "enchants": []
+          }
         },
         {
           "id": 2,
           "item": [
-            {"item": "RAW_IRON", "amount": 3, "name": null, "lore": [], "enchants": []},
-            {"item": "TORCH", "amount": 32, "name": null, "lore": [], "enchants": []}
+            {
+              "item": "RAW_IRON",
+              "amount": 3,
+              "name": null,
+              "lore": [],
+              "enchants": []
+            },
+            {
+              "item": "TORCH",
+              "amount": 32,
+              "name": null,
+              "lore": [],
+              "enchants": []
+            }
           ]
         },
         {
           "id": 3,
-          "item": {"item": "RAW_COPPER", "amount": 8, "name": null, "lore": [], "enchants": []}
+          "item": {
+            "item": "RAW_COPPER",
+            "amount": 8,
+            "name": null,
+            "lore": [],
+            "enchants": []
+          }
         }
       ],
       "item": [],
@@ -398,19 +863,49 @@
         {
           "id": 1,
           "item": [
-            {"item": "RAW_IRON", "amount": 5, "name": null, "lore": [], "enchants": []},
-            {"item": "COAL", "amount": 16, "name": null, "lore": [], "enchants": []}
+            {
+              "item": "RAW_IRON",
+              "amount": 5,
+              "name": null,
+              "lore": [],
+              "enchants": []
+            },
+            {
+              "item": "COAL",
+              "amount": 16,
+              "name": null,
+              "lore": [],
+              "enchants": []
+            }
           ]
         },
         {
           "id": 2,
-          "item": {"item": "LAPIS_LAZULI", "amount": 8, "name": null, "lore": [], "enchants": []}
+          "item": {
+            "item": "LAPIS_LAZULI",
+            "amount": 8,
+            "name": null,
+            "lore": [],
+            "enchants": []
+          }
         },
         {
           "id": 3,
           "item": [
-            {"item": "BREAD", "amount": 16, "name": null, "lore": [], "enchants": []},
-            {"item": "TORCH", "amount": 64, "name": null, "lore": [], "enchants": []}
+            {
+              "item": "BREAD",
+              "amount": 16,
+              "name": null,
+              "lore": [],
+              "enchants": []
+            },
+            {
+              "item": "TORCH",
+              "amount": 64,
+              "name": null,
+              "lore": [],
+              "enchants": []
+            }
           ]
         }
       ],
@@ -427,9 +922,22 @@
           "item": "IRON_PICKAXE",
           "amount": 1,
           "name": "&f광부의 철 곡괭이",
-          "nbt": ["untradeable"],
-          "lore": ["&8묵묵히 땅을 파온 자의 도구"],
-          "enchants": [{"enchant": "EFFICIENCY", "level": 2}, {"enchant": "UNBREAKING", "level": 1}]
+          "nbt": [
+            "untradeable"
+          ],
+          "lore": [
+            "&8묵묵히 땅을 파온 자의 도구"
+          ],
+          "enchants": [
+            {
+              "enchant": "EFFICIENCY",
+              "level": 2
+            },
+            {
+              "enchant": "UNBREAKING",
+              "level": 1
+            }
+          ]
         }
       ],
       "givePlayerExp": 200
@@ -441,19 +949,49 @@
         {
           "id": 1,
           "item": [
-            {"item": "GOLD_INGOT", "amount": 5, "name": null, "lore": [], "enchants": []},
-            {"item": "REDSTONE", "amount": 24, "name": null, "lore": [], "enchants": []}
+            {
+              "item": "GOLD_INGOT",
+              "amount": 5,
+              "name": null,
+              "lore": [],
+              "enchants": []
+            },
+            {
+              "item": "REDSTONE",
+              "amount": 24,
+              "name": null,
+              "lore": [],
+              "enchants": []
+            }
           ]
         },
         {
           "id": 2,
-          "item": {"item": "DIAMOND", "amount": 1, "name": null, "lore": [], "enchants": []}
+          "item": {
+            "item": "DIAMOND",
+            "amount": 1,
+            "name": null,
+            "lore": [],
+            "enchants": []
+          }
         },
         {
           "id": 3,
           "item": [
-            {"item": "IRON_INGOT", "amount": 12, "name": null, "lore": [], "enchants": []},
-            {"item": "LAPIS_LAZULI", "amount": 16, "name": null, "lore": [], "enchants": []}
+            {
+              "item": "IRON_INGOT",
+              "amount": 12,
+              "name": null,
+              "lore": [],
+              "enchants": []
+            },
+            {
+              "item": "LAPIS_LAZULI",
+              "amount": 16,
+              "name": null,
+              "lore": [],
+              "enchants": []
+            }
           ]
         }
       ],
@@ -470,9 +1008,22 @@
           "item": "IRON_PICKAXE",
           "amount": 1,
           "name": "&b숙련 광부의 곡괭이",
-          "nbt": ["untradeable"],
-          "lore": ["&8깊은 광맥에도 거침이 없다"],
-          "enchants": [{"enchant": "EFFICIENCY", "level": 3}, {"enchant": "UNBREAKING", "level": 2}]
+          "nbt": [
+            "untradeable"
+          ],
+          "lore": [
+            "&8깊은 광맥에도 거침이 없다"
+          ],
+          "enchants": [
+            {
+              "enchant": "EFFICIENCY",
+              "level": 3
+            },
+            {
+              "enchant": "UNBREAKING",
+              "level": 2
+            }
+          ]
         }
       ],
       "givePlayerExp": 400
@@ -483,20 +1034,50 @@
       "randomItem": [
         {
           "id": 1,
-          "item": {"item": "DIAMOND", "amount": 2, "name": null, "lore": [], "enchants": []}
+          "item": {
+            "item": "DIAMOND",
+            "amount": 2,
+            "name": null,
+            "lore": [],
+            "enchants": []
+          }
         },
         {
           "id": 2,
           "item": [
-            {"item": "EMERALD", "amount": 3, "name": null, "lore": [], "enchants": []},
-            {"item": "GOLD_INGOT", "amount": 8, "name": null, "lore": [], "enchants": []}
+            {
+              "item": "EMERALD",
+              "amount": 3,
+              "name": null,
+              "lore": [],
+              "enchants": []
+            },
+            {
+              "item": "GOLD_INGOT",
+              "amount": 8,
+              "name": null,
+              "lore": [],
+              "enchants": []
+            }
           ]
         },
         {
           "id": 3,
           "item": [
-            {"item": "IRON_BLOCK", "amount": 3, "name": null, "lore": [], "enchants": []},
-            {"item": "REDSTONE_BLOCK", "amount": 4, "name": null, "lore": [], "enchants": []}
+            {
+              "item": "IRON_BLOCK",
+              "amount": 3,
+              "name": null,
+              "lore": [],
+              "enchants": []
+            },
+            {
+              "item": "REDSTONE_BLOCK",
+              "amount": 4,
+              "name": null,
+              "lore": [],
+              "enchants": []
+            }
           ]
         }
       ],
@@ -513,12 +1094,67 @@
           "item": "DIAMOND_PICKAXE",
           "amount": 1,
           "name": "&9장인의 곡괭이",
-          "nbt": ["untradeable"],
-          "lore": ["&8단단한 암반도 두려워하는 곡괭이"],
-          "enchants": [{"enchant": "EFFICIENCY", "level": 3}, {"enchant": "UNBREAKING", "level": 2}, {"enchant": "FORTUNE", "level": 1}]
+          "nbt": [
+            "untradeable"
+          ],
+          "lore": [
+            "&8단단한 암반도 두려워하는 곡괭이"
+          ],
+          "enchants": [
+            {
+              "enchant": "EFFICIENCY",
+              "level": 3
+            },
+            {
+              "enchant": "UNBREAKING",
+              "level": 2
+            },
+            {
+              "enchant": "FORTUNE",
+              "level": 1
+            }
+          ]
         }
       ],
       "givePlayerExp": 500
+    },
+    {
+      "level": 45,
+      "isRandom": true,
+      "randomItem": [
+        {
+          "id": 1,
+          "item": {
+            "item": "RAW_IRON",
+            "amount": 10,
+            "name": null,
+            "lore": [],
+            "enchants": []
+          }
+        },
+        {
+          "id": 2,
+          "item": {
+            "item": "LAPIS_LAZULI",
+            "amount": 18,
+            "name": null,
+            "lore": [],
+            "enchants": []
+          }
+        },
+        {
+          "id": 3,
+          "item": {
+            "item": "REDSTONE",
+            "amount": 32,
+            "name": null,
+            "lore": [],
+            "enchants": []
+          }
+        }
+      ],
+      "item": [],
+      "givePlayerExp": 900
     },
     {
       "level": 50,
@@ -530,9 +1166,27 @@
           "item": "DIAMOND_PICKAXE",
           "amount": 1,
           "name": "&d대장인의 곡괭이",
-          "nbt": ["untradeable"],
-          "lore": ["&8대지의 심장을 꿰뚫는 곡괭이", "&7채굴의 경지에 오른 자만이 들 수 있다"],
-          "enchants": [{"enchant": "EFFICIENCY", "level": 4}, {"enchant": "UNBREAKING", "level": 3}, {"enchant": "FORTUNE", "level": 2}]
+          "nbt": [
+            "untradeable"
+          ],
+          "lore": [
+            "&8대지의 심장을 꿰뚫는 곡괭이",
+            "&7채굴의 경지에 오른 자만이 들 수 있다"
+          ],
+          "enchants": [
+            {
+              "enchant": "EFFICIENCY",
+              "level": 4
+            },
+            {
+              "enchant": "UNBREAKING",
+              "level": 3
+            },
+            {
+              "enchant": "FORTUNE",
+              "level": 2
+            }
+          ]
         }
       ],
       "givePlayerExp": 750
@@ -544,22 +1198,58 @@
         {
           "id": 1,
           "item": [
-            {"item": "DIAMOND", "amount": 2, "name": null, "lore": [], "enchants": []},
-            {"item": "EMERALD", "amount": 3, "name": null, "lore": [], "enchants": []}
+            {
+              "item": "DIAMOND",
+              "amount": 2,
+              "name": null,
+              "lore": [],
+              "enchants": []
+            },
+            {
+              "item": "EMERALD",
+              "amount": 3,
+              "name": null,
+              "lore": [],
+              "enchants": []
+            }
           ]
         },
         {
           "id": 2,
           "item": [
-            {"item": "GOLD_BLOCK", "amount": 3, "name": null, "lore": [], "enchants": []},
-            {"item": "LAPIS_BLOCK", "amount": 4, "name": null, "lore": [], "enchants": []}
+            {
+              "item": "GOLD_BLOCK",
+              "amount": 3,
+              "name": null,
+              "lore": [],
+              "enchants": []
+            },
+            {
+              "item": "LAPIS_BLOCK",
+              "amount": 4,
+              "name": null,
+              "lore": [],
+              "enchants": []
+            }
           ]
         },
         {
           "id": 3,
           "item": [
-            {"item": "IRON_BLOCK", "amount": 5, "name": null, "lore": [], "enchants": []},
-            {"item": "REDSTONE_BLOCK", "amount": 6, "name": null, "lore": [], "enchants": []}
+            {
+              "item": "IRON_BLOCK",
+              "amount": 5,
+              "name": null,
+              "lore": [],
+              "enchants": []
+            },
+            {
+              "item": "REDSTONE_BLOCK",
+              "amount": 6,
+              "name": null,
+              "lore": [],
+              "enchants": []
+            }
           ]
         }
       ],
@@ -567,27 +1257,127 @@
       "givePlayerExp": 600
     },
     {
+      "level": 60,
+      "isRandom": true,
+      "randomItem": [
+        {
+          "id": 1,
+          "item": {
+            "item": "GOLD_INGOT",
+            "amount": 8,
+            "name": null,
+            "lore": [],
+            "enchants": []
+          }
+        },
+        {
+          "id": 2,
+          "item": {
+            "item": "DIAMOND",
+            "amount": 2,
+            "name": null,
+            "lore": [],
+            "enchants": []
+          }
+        },
+        {
+          "id": 3,
+          "item": {
+            "item": "EMERALD",
+            "amount": 3,
+            "name": null,
+            "lore": [],
+            "enchants": []
+          }
+        }
+      ],
+      "item": [],
+      "givePlayerExp": 1200
+    },
+    {
       "level": 65,
       "isRandom": true,
       "randomItem": [
         {
           "id": 1,
-          "item": {"item": "DIAMOND", "amount": 5, "name": null, "lore": [], "enchants": []}
+          "item": {
+            "item": "DIAMOND",
+            "amount": 5,
+            "name": null,
+            "lore": [],
+            "enchants": []
+          }
         },
         {
           "id": 2,
           "item": [
-            {"item": "EMERALD", "amount": 8, "name": null, "lore": [], "enchants": []},
-            {"item": "DIAMOND", "amount": 2, "name": null, "lore": [], "enchants": []}
+            {
+              "item": "EMERALD",
+              "amount": 8,
+              "name": null,
+              "lore": [],
+              "enchants": []
+            },
+            {
+              "item": "DIAMOND",
+              "amount": 2,
+              "name": null,
+              "lore": [],
+              "enchants": []
+            }
           ]
         },
         {
           "id": 3,
-          "item": {"item": "DIAMOND_BLOCK", "amount": 1, "name": null, "lore": [], "enchants": []}
+          "item": {
+            "item": "DIAMOND_BLOCK",
+            "amount": 1,
+            "name": null,
+            "lore": [],
+            "enchants": []
+          }
         }
       ],
       "item": [],
       "givePlayerExp": 1000
+    },
+    {
+      "level": 70,
+      "isRandom": true,
+      "randomItem": [
+        {
+          "id": 1,
+          "item": {
+            "item": "GOLD_INGOT",
+            "amount": 8,
+            "name": null,
+            "lore": [],
+            "enchants": []
+          }
+        },
+        {
+          "id": 2,
+          "item": {
+            "item": "DIAMOND",
+            "amount": 2,
+            "name": null,
+            "lore": [],
+            "enchants": []
+          }
+        },
+        {
+          "id": 3,
+          "item": {
+            "item": "EMERALD",
+            "amount": 3,
+            "name": null,
+            "lore": [],
+            "enchants": []
+          }
+        }
+      ],
+      "item": [],
+      "givePlayerExp": 1400
     },
     {
       "level": 75,
@@ -596,19 +1386,49 @@
         {
           "id": 1,
           "item": [
-            {"item": "DIAMOND_BLOCK", "amount": 1, "name": null, "lore": [], "enchants": []},
-            {"item": "EMERALD_BLOCK", "amount": 1, "name": null, "lore": [], "enchants": []}
+            {
+              "item": "DIAMOND_BLOCK",
+              "amount": 1,
+              "name": null,
+              "lore": [],
+              "enchants": []
+            },
+            {
+              "item": "EMERALD_BLOCK",
+              "amount": 1,
+              "name": null,
+              "lore": [],
+              "enchants": []
+            }
           ]
         },
         {
           "id": 2,
-          "item": {"item": "NETHERITE_SCRAP", "amount": 1, "name": null, "lore": [], "enchants": []}
+          "item": {
+            "item": "NETHERITE_SCRAP",
+            "amount": 1,
+            "name": null,
+            "lore": [],
+            "enchants": []
+          }
         },
         {
           "id": 3,
           "item": [
-            {"item": "DIAMOND", "amount": 8, "name": null, "lore": [], "enchants": []},
-            {"item": "GOLD_BLOCK", "amount": 4, "name": null, "lore": [], "enchants": []}
+            {
+              "item": "DIAMOND",
+              "amount": 8,
+              "name": null,
+              "lore": [],
+              "enchants": []
+            },
+            {
+              "item": "GOLD_BLOCK",
+              "amount": 4,
+              "name": null,
+              "lore": [],
+              "enchants": []
+            }
           ]
         }
       ],
@@ -625,12 +1445,68 @@
           "item": "DIAMOND_PICKAXE",
           "amount": 1,
           "name": "&5명인의 곡괭이",
-          "nbt": ["untradeable"],
-          "lore": ["&8세상의 모든 광맥이 길을 내어주는 곡괭이", "&7전설적인 광부만이 휘두를 수 있다"],
-          "enchants": [{"enchant": "EFFICIENCY", "level": 5}, {"enchant": "UNBREAKING", "level": 3}, {"enchant": "FORTUNE", "level": 2}]
+          "nbt": [
+            "untradeable"
+          ],
+          "lore": [
+            "&8세상의 모든 광맥이 길을 내어주는 곡괭이",
+            "&7전설적인 광부만이 휘두를 수 있다"
+          ],
+          "enchants": [
+            {
+              "enchant": "EFFICIENCY",
+              "level": 5
+            },
+            {
+              "enchant": "UNBREAKING",
+              "level": 3
+            },
+            {
+              "enchant": "FORTUNE",
+              "level": 2
+            }
+          ]
         }
       ],
       "givePlayerExp": 1500
+    },
+    {
+      "level": 85,
+      "isRandom": true,
+      "randomItem": [
+        {
+          "id": 1,
+          "item": {
+            "item": "DIAMOND",
+            "amount": 6,
+            "name": null,
+            "lore": [],
+            "enchants": []
+          }
+        },
+        {
+          "id": 2,
+          "item": {
+            "item": "ANCIENT_DEBRIS",
+            "amount": 1,
+            "name": null,
+            "lore": [],
+            "enchants": []
+          }
+        },
+        {
+          "id": 3,
+          "item": {
+            "item": "NETHERITE_SCRAP",
+            "amount": 2,
+            "name": null,
+            "lore": [],
+            "enchants": []
+          }
+        }
+      ],
+      "item": [],
+      "givePlayerExp": 1700
     },
     {
       "level": 90,
@@ -638,22 +1514,84 @@
       "randomItem": [
         {
           "id": 1,
-          "item": {"item": "NETHERITE_SCRAP", "amount": 2, "name": null, "lore": [], "enchants": []}
+          "item": {
+            "item": "NETHERITE_SCRAP",
+            "amount": 2,
+            "name": null,
+            "lore": [],
+            "enchants": []
+          }
         },
         {
           "id": 2,
           "item": [
-            {"item": "DIAMOND_BLOCK", "amount": 2, "name": null, "lore": [], "enchants": []},
-            {"item": "EMERALD_BLOCK", "amount": 2, "name": null, "lore": [], "enchants": []}
+            {
+              "item": "DIAMOND_BLOCK",
+              "amount": 2,
+              "name": null,
+              "lore": [],
+              "enchants": []
+            },
+            {
+              "item": "EMERALD_BLOCK",
+              "amount": 2,
+              "name": null,
+              "lore": [],
+              "enchants": []
+            }
           ]
         },
         {
           "id": 3,
-          "item": {"item": "NETHERITE_INGOT", "amount": 1, "name": null, "lore": [], "enchants": []}
+          "item": {
+            "item": "NETHERITE_INGOT",
+            "amount": 1,
+            "name": null,
+            "lore": [],
+            "enchants": []
+          }
         }
       ],
       "item": [],
       "givePlayerExp": 2000
+    },
+    {
+      "level": 95,
+      "isRandom": true,
+      "randomItem": [
+        {
+          "id": 1,
+          "item": {
+            "item": "DIAMOND",
+            "amount": 6,
+            "name": null,
+            "lore": [],
+            "enchants": []
+          }
+        },
+        {
+          "id": 2,
+          "item": {
+            "item": "ANCIENT_DEBRIS",
+            "amount": 1,
+            "name": null,
+            "lore": [],
+            "enchants": []
+          }
+        },
+        {
+          "id": 3,
+          "item": {
+            "item": "NETHERITE_SCRAP",
+            "amount": 2,
+            "name": null,
+            "lore": [],
+            "enchants": []
+          }
+        }
+      ],
+      "item": [],
+      "givePlayerExp": 1900
     },
     {
       "level": 100,
@@ -665,23 +1603,102 @@
           "item": "NETHERITE_PICKAXE",
           "amount": 1,
           "name": "&6&l광부왕의 곡괭이",
-          "nbt": ["untradeable"],
-          "lore": ["&8모든 광맥을 정복한 자의 곡괭이", "&7이 곡괭이 앞에 부서지지 않는 것은 없다", "&6[ 광질 Lv.100 달성 보상 ]"],
-          "enchants": [{"enchant": "EFFICIENCY", "level": 5}, {"enchant": "UNBREAKING", "level": 3}, {"enchant": "FORTUNE", "level": 3}]
+          "nbt": [
+            "untradeable"
+          ],
+          "lore": [
+            "&8모든 광맥을 정복한 자의 곡괭이",
+            "&7이 곡괭이 앞에 부서지지 않는 것은 없다",
+            "&6[ 광질 Lv.100 달성 보상 ]"
+          ],
+          "enchants": [
+            {
+              "enchant": "EFFICIENCY",
+              "level": 5
+            },
+            {
+              "enchant": "UNBREAKING",
+              "level": 3
+            },
+            {
+              "enchant": "FORTUNE",
+              "level": 3
+            }
+          ]
         }
       ],
       "givePlayerExp": 3000
     }
   ],
   "passive": [
-    {"level": 80, "effect": [{"id": "haste", "level": 1}], "usageTime": 10, "coolTime": 120},
-    {"level": 85, "effect": [{"id": "haste", "level": 3}], "usageTime": 10, "coolTime": 120},
-    {"level": 90, "effect": [{"id": "haste", "level": 3}], "usageTime": 15, "coolTime": 120},
-    {"level": 95, "effect": [{"id": "haste", "level": 4}], "usageTime": 15, "coolTime": 100},
-    {"level": 100, "effect": [{"id": "haste", "level": 4}, {"id": "fire_resistance", "level": 1}], "usageTime": 15, "coolTime": 100}
+    {
+      "level": 80,
+      "effect": [
+        {
+          "id": "haste",
+          "level": 1
+        }
+      ],
+      "usageTime": 10,
+      "coolTime": 120
+    },
+    {
+      "level": 85,
+      "effect": [
+        {
+          "id": "haste",
+          "level": 3
+        }
+      ],
+      "usageTime": 10,
+      "coolTime": 120
+    },
+    {
+      "level": 90,
+      "effect": [
+        {
+          "id": "haste",
+          "level": 3
+        }
+      ],
+      "usageTime": 15,
+      "coolTime": 120
+    },
+    {
+      "level": 95,
+      "effect": [
+        {
+          "id": "haste",
+          "level": 4
+        }
+      ],
+      "usageTime": 15,
+      "coolTime": 100
+    },
+    {
+      "level": 100,
+      "effect": [
+        {
+          "id": "haste",
+          "level": 4
+        },
+        {
+          "id": "fire_resistance",
+          "level": 1
+        }
+      ],
+      "usageTime": 15,
+      "coolTime": 100
+    }
   ],
   "title": [
-    {"level": 20, "title": "초급 광부"},
-    {"level": 100, "title": "광부"}
+    {
+      "level": 20,
+      "title": "초급 광부"
+    },
+    {
+      "level": 100,
+      "title": "광부"
+    }
   ]
 }

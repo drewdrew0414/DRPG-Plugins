@@ -1,51 +1,76 @@
 {
-  "name": "Fishing",
-  "displayName": "낚시",
+  "name": "Alchemy",
+  "displayName": "연금술",
   "startLevel": 0,
   "maxLevel": 100,
   "multipleExp": 1,
   "getExp": [
     {
-      "fishCatch": [
+      "alchemyCraft": [
         {
-          "type": "FISH",
-          "item": [
-            "COD"
-          ],
+          "targetItem": "GLISTERING_MELON_SLICE",
           "getExp": [
             {
-              "max": 9,
-              "min": 4
+              "max": 8,
+              "min": 3
             }
           ],
           "bonusExp": [
             {
-              "max": 1.15,
+              "max": 1.18,
               "min": 1,
-              "chance": 0.28
+              "chance": 0.3
             }
           ],
           "requiredLevel": 0,
           "combo": [
             {
-              "count": 3,
-              "multiply": 1.1
+              "count": 8,
+              "multiply": 1.12
             },
             {
-              "count": 10,
-              "multiply": 1.3
+              "count": 24,
+              "multiply": 1.32
             },
             {
-              "count": 25,
-              "multiply": 1.55
+              "count": 60,
+              "multiply": 1.6
             }
           ]
         },
         {
-          "type": "FISH",
-          "item": [
-            "SALMON"
+          "targetItem": "GOLDEN_CARROT",
+          "getExp": [
+            {
+              "max": 10,
+              "min": 4
+            }
           ],
+          "bonusExp": [
+            {
+              "max": 1.25,
+              "min": 1,
+              "chance": 0.35
+            }
+          ],
+          "requiredLevel": 5,
+          "combo": [
+            {
+              "count": 8,
+              "multiply": 1.15
+            },
+            {
+              "count": 24,
+              "multiply": 1.38
+            },
+            {
+              "count": 60,
+              "multiply": 1.7
+            }
+          ]
+        },
+        {
+          "targetItem": "FERMENTED_SPIDER_EYE",
           "getExp": [
             {
               "max": 12,
@@ -54,36 +79,64 @@
           ],
           "bonusExp": [
             {
-              "max": 1.22,
+              "max": 1.28,
               "min": 1,
-              "chance": 0.32
+              "chance": 0.36
             }
           ],
-          "requiredLevel": 0,
+          "requiredLevel": 8,
           "combo": [
             {
-              "count": 3,
-              "multiply": 1.1
+              "count": 6,
+              "multiply": 1.18
             },
             {
-              "count": 10,
-              "multiply": 1.32
+              "count": 18,
+              "multiply": 1.42
             },
             {
-              "count": 25,
-              "multiply": 1.6
+              "count": 45,
+              "multiply": 1.75
             }
           ]
         },
         {
-          "type": "RARE_FISH",
-          "item": [
-            "PUFFERFISH"
-          ],
+          "targetItem": "MAGMA_CREAM",
           "getExp": [
             {
-              "max": 20,
-              "min": 9
+              "max": 14,
+              "min": 6
+            }
+          ],
+          "bonusExp": [
+            {
+              "max": 1.35,
+              "min": 1,
+              "chance": 0.4
+            }
+          ],
+          "requiredLevel": 15,
+          "combo": [
+            {
+              "count": 5,
+              "multiply": 1.22
+            },
+            {
+              "count": 15,
+              "multiply": 1.5
+            },
+            {
+              "count": 35,
+              "multiply": 1.9
+            }
+          ]
+        },
+        {
+          "targetItem": "BLAZE_POWDER",
+          "getExp": [
+            {
+              "max": 16,
+              "min": 7
             }
           ],
           "bonusExp": [
@@ -93,164 +146,174 @@
               "chance": 0.42
             }
           ],
-          "requiredLevel": 10,
-          "combo": [
-            {
-              "count": 2,
-              "multiply": 1.18
-            },
-            {
-              "count": 6,
-              "multiply": 1.45
-            },
-            {
-              "count": 14,
-              "multiply": 1.85
-            }
-          ]
-        },
-        {
-          "type": "RARE_FISH",
-          "item": [
-            "TROPICAL_FISH"
-          ],
-          "getExp": [
-            {
-              "max": 24,
-              "min": 10
-            }
-          ],
-          "bonusExp": [
-            {
-              "max": 1.45,
-              "min": 1,
-              "chance": 0.45
-            }
-          ],
-          "requiredLevel": 12,
-          "combo": [
-            {
-              "count": 2,
-              "multiply": 1.18
-            },
-            {
-              "count": 6,
-              "multiply": 1.45
-            },
-            {
-              "count": 14,
-              "multiply": 1.85
-            }
-          ]
-        },
-        {
-          "type": "JUNK",
-          "item": [
-            "LILY_PAD",
-            "BOWL",
-            "LEATHER",
-            "STICK",
-            "STRING",
-            "BONE"
-          ],
-          "getExp": [
-            {
-              "max": 4,
-              "min": 1
-            }
-          ],
-          "bonusExp": [
-            {
-              "max": 1.1,
-              "min": 1,
-              "chance": 0.22
-            }
-          ],
-          "requiredLevel": 0,
+          "requiredLevel": 18,
           "combo": [
             {
               "count": 5,
-              "multiply": 1.08
-            },
-            {
-              "count": 20,
               "multiply": 1.22
             },
             {
-              "count": 50,
-              "multiply": 1.45
+              "count": 15,
+              "multiply": 1.5
+            },
+            {
+              "count": 35,
+              "multiply": 1.9
             }
           ]
         },
         {
-          "type": "TREASURE",
-          "item": [
-            "BOW",
-            "FISHING_ROD",
-            "NAME_TAG",
-            "NAUTILUS_SHELL",
-            "SADDLE"
-          ],
+          "targetItem": "GOLDEN_APPLE",
           "getExp": [
             {
-              "max": 60,
-              "min": 25
+              "max": 26,
+              "min": 12
+            }
+          ],
+          "bonusExp": [
+            {
+              "max": 1.55,
+              "min": 1,
+              "chance": 0.48
+            }
+          ],
+          "requiredLevel": 25,
+          "combo": [
+            {
+              "count": 3,
+              "multiply": 1.3
+            },
+            {
+              "count": 8,
+              "multiply": 1.7
+            },
+            {
+              "count": 18,
+              "multiply": 2.2
+            }
+          ]
+        },
+        {
+          "targetItem": "GHAST_TEAR",
+          "getExp": [
+            {
+              "max": 35,
+              "min": 16
             }
           ],
           "bonusExp": [
             {
               "max": 1.65,
               "min": 1,
-              "chance": 0.5
+              "chance": 0.52
             }
           ],
-          "requiredLevel": 15,
+          "requiredLevel": 30,
           "combo": [
             {
-              "count": 1,
-              "multiply": 1.25
-            },
-            {
-              "count": 3,
-              "multiply": 1.7
+              "count": 2,
+              "multiply": 1.35
             },
             {
               "count": 6,
-              "multiply": 2.2
+              "multiply": 1.8
+            },
+            {
+              "count": 14,
+              "multiply": 2.35
             }
           ]
         },
         {
-          "type": "TREASURE",
-          "item": [
-            "ENCHANTED_BOOK"
-          ],
+          "targetItem": "PHANTOM_MEMBRANE",
           "getExp": [
             {
-              "max": 90,
-              "min": 45
+              "max": 40,
+              "min": 18
+            }
+          ],
+          "bonusExp": [
+            {
+              "max": 1.7,
+              "min": 1,
+              "chance": 0.55
+            }
+          ],
+          "requiredLevel": 35,
+          "combo": [
+            {
+              "count": 2,
+              "multiply": 1.35
+            },
+            {
+              "count": 6,
+              "multiply": 1.85
+            },
+            {
+              "count": 14,
+              "multiply": 2.4
+            }
+          ]
+        },
+        {
+          "targetItem": "ENDER_EYE",
+          "getExp": [
+            {
+              "max": 55,
+              "min": 25
             }
           ],
           "bonusExp": [
             {
               "max": 1.85,
               "min": 1,
-              "chance": 0.55
+              "chance": 0.6
             }
           ],
-          "requiredLevel": 25,
+          "requiredLevel": 45,
           "combo": [
             {
-              "count": 1,
-              "multiply": 1.35
-            },
-            {
               "count": 2,
-              "multiply": 1.8
+              "multiply": 1.45
             },
             {
               "count": 5,
-              "multiply": 2.5
+              "multiply": 2
+            },
+            {
+              "count": 12,
+              "multiply": 2.75
+            }
+          ]
+        },
+        {
+          "targetItem": "ENCHANTED_GOLDEN_APPLE",
+          "getExp": [
+            {
+              "max": 350,
+              "min": 200
+            }
+          ],
+          "bonusExp": [
+            {
+              "max": 2,
+              "min": 1,
+              "chance": 0.65
+            }
+          ],
+          "requiredLevel": 50,
+          "combo": [
+            {
+              "count": 1,
+              "multiply": 1.5
+            },
+            {
+              "count": 2,
+              "multiply": 2.2
+            },
+            {
+              "count": 4,
+              "multiply": 3
             }
           ]
         }
@@ -265,8 +328,8 @@
         {
           "id": 1,
           "item": {
-            "item": "COD",
-            "amount": 16,
+            "item": "GOLD_NUGGET",
+            "amount": 32,
             "name": null,
             "lore": [],
             "enchants": []
@@ -275,7 +338,7 @@
         {
           "id": 2,
           "item": {
-            "item": "SALMON",
+            "item": "GLOWSTONE_DUST",
             "amount": 12,
             "name": null,
             "lore": [],
@@ -285,8 +348,8 @@
         {
           "id": 3,
           "item": {
-            "item": "STRING",
-            "amount": 12,
+            "item": "AMETHYST_SHARD",
+            "amount": 8,
             "name": null,
             "lore": [],
             "enchants": []
@@ -298,43 +361,13 @@
     },
     {
       "level": 10,
-      "isRandom": false,
-      "randomItem": [],
-      "item": [
-        {
-          "id": 0,
-          "item": "FISHING_ROD",
-          "amount": 1,
-          "name": "&f강태공의 낚싯대",
-          "nbt": [
-            "untradeable"
-          ],
-          "lore": [
-            "&8기다림의 미학을 아는 자의 도구"
-          ],
-          "enchants": [
-            {
-              "enchant": "LURE",
-              "level": 1
-            },
-            {
-              "enchant": "LUCK_OF_THE_SEA",
-              "level": 1
-            }
-          ]
-        }
-      ],
-      "givePlayerExp": 100
-    },
-    {
-      "level": 15,
       "isRandom": true,
       "randomItem": [
         {
           "id": 1,
           "item": {
-            "item": "COD",
-            "amount": 16,
+            "item": "GOLD_NUGGET",
+            "amount": 32,
             "name": null,
             "lore": [],
             "enchants": []
@@ -343,7 +376,7 @@
         {
           "id": 2,
           "item": {
-            "item": "SALMON",
+            "item": "GLOWSTONE_DUST",
             "amount": 12,
             "name": null,
             "lore": [],
@@ -353,8 +386,46 @@
         {
           "id": 3,
           "item": {
-            "item": "STRING",
+            "item": "AMETHYST_SHARD",
+            "amount": 8,
+            "name": null,
+            "lore": [],
+            "enchants": []
+          }
+        }
+      ],
+      "item": [],
+      "givePlayerExp": 200
+    },
+    {
+      "level": 15,
+      "isRandom": true,
+      "randomItem": [
+        {
+          "id": 1,
+          "item": {
+            "item": "GOLD_NUGGET",
+            "amount": 32,
+            "name": null,
+            "lore": [],
+            "enchants": []
+          }
+        },
+        {
+          "id": 2,
+          "item": {
+            "item": "GLOWSTONE_DUST",
             "amount": 12,
+            "name": null,
+            "lore": [],
+            "enchants": []
+          }
+        },
+        {
+          "id": 3,
+          "item": {
+            "item": "AMETHYST_SHARD",
+            "amount": 8,
             "name": null,
             "lore": [],
             "enchants": []
@@ -366,41 +437,22 @@
     },
     {
       "level": 20,
-      "isRandom": true,
-      "randomItem": [
+      "isRandom": false,
+      "randomItem": [],
+      "item": [
         {
-          "id": 1,
-          "item": {
-            "item": "COD",
-            "amount": 16,
-            "name": null,
-            "lore": [],
-            "enchants": []
-          }
-        },
-        {
-          "id": 2,
-          "item": {
-            "item": "SALMON",
-            "amount": 12,
-            "name": null,
-            "lore": [],
-            "enchants": []
-          }
-        },
-        {
-          "id": 3,
-          "item": {
-            "item": "STRING",
-            "amount": 12,
-            "name": null,
-            "lore": [],
-            "enchants": []
-          }
+          "id": 0,
+          "item": "ENCHANTING_TABLE",
+          "amount": 1,
+          "name": "&d고대 마법학자의 전송대",
+          "nbt": [],
+          "lore": [
+            "&8신비로운 마력을 가두어 두는 제단"
+          ],
+          "enchants": []
         }
       ],
-      "item": [],
-      "givePlayerExp": 400
+      "givePlayerExp": 200
     },
     {
       "level": 25,
@@ -409,8 +461,8 @@
         {
           "id": 1,
           "item": {
-            "item": "COD",
-            "amount": 16,
+            "item": "GOLD_NUGGET",
+            "amount": 32,
             "name": null,
             "lore": [],
             "enchants": []
@@ -419,7 +471,7 @@
         {
           "id": 2,
           "item": {
-            "item": "SALMON",
+            "item": "GLOWSTONE_DUST",
             "amount": 12,
             "name": null,
             "lore": [],
@@ -429,8 +481,8 @@
         {
           "id": 3,
           "item": {
-            "item": "STRING",
-            "amount": 12,
+            "item": "AMETHYST_SHARD",
+            "amount": 8,
             "name": null,
             "lore": [],
             "enchants": []
@@ -447,8 +499,8 @@
         {
           "id": 1,
           "item": {
-            "item": "PUFFERFISH",
-            "amount": 6,
+            "item": "GOLD_INGOT",
+            "amount": 8,
             "name": null,
             "lore": [],
             "enchants": []
@@ -457,8 +509,8 @@
         {
           "id": 2,
           "item": {
-            "item": "TROPICAL_FISH",
-            "amount": 6,
+            "item": "BLAZE_POWDER",
+            "amount": 8,
             "name": null,
             "lore": [],
             "enchants": []
@@ -467,8 +519,8 @@
         {
           "id": 3,
           "item": {
-            "item": "LILY_PAD",
-            "amount": 12,
+            "item": "ENDER_PEARL",
+            "amount": 4,
             "name": null,
             "lore": [],
             "enchants": []
@@ -485,8 +537,8 @@
         {
           "id": 1,
           "item": {
-            "item": "PUFFERFISH",
-            "amount": 6,
+            "item": "GOLD_INGOT",
+            "amount": 8,
             "name": null,
             "lore": [],
             "enchants": []
@@ -495,8 +547,8 @@
         {
           "id": 2,
           "item": {
-            "item": "TROPICAL_FISH",
-            "amount": 6,
+            "item": "BLAZE_POWDER",
+            "amount": 8,
             "name": null,
             "lore": [],
             "enchants": []
@@ -505,8 +557,8 @@
         {
           "id": 3,
           "item": {
-            "item": "LILY_PAD",
-            "amount": 12,
+            "item": "ENDER_PEARL",
+            "amount": 4,
             "name": null,
             "lore": [],
             "enchants": []
@@ -523,8 +575,8 @@
         {
           "id": 1,
           "item": {
-            "item": "PUFFERFISH",
-            "amount": 6,
+            "item": "GOLD_INGOT",
+            "amount": 8,
             "name": null,
             "lore": [],
             "enchants": []
@@ -533,8 +585,8 @@
         {
           "id": 2,
           "item": {
-            "item": "TROPICAL_FISH",
-            "amount": 6,
+            "item": "BLAZE_POWDER",
+            "amount": 8,
             "name": null,
             "lore": [],
             "enchants": []
@@ -543,8 +595,8 @@
         {
           "id": 3,
           "item": {
-            "item": "LILY_PAD",
-            "amount": 12,
+            "item": "ENDER_PEARL",
+            "amount": 4,
             "name": null,
             "lore": [],
             "enchants": []
@@ -561,8 +613,8 @@
         {
           "id": 1,
           "item": {
-            "item": "PUFFERFISH",
-            "amount": 6,
+            "item": "GOLD_INGOT",
+            "amount": 8,
             "name": null,
             "lore": [],
             "enchants": []
@@ -571,8 +623,8 @@
         {
           "id": 2,
           "item": {
-            "item": "TROPICAL_FISH",
-            "amount": 6,
+            "item": "BLAZE_POWDER",
+            "amount": 8,
             "name": null,
             "lore": [],
             "enchants": []
@@ -581,8 +633,8 @@
         {
           "id": 3,
           "item": {
-            "item": "LILY_PAD",
-            "amount": 12,
+            "item": "ENDER_PEARL",
+            "amount": 4,
             "name": null,
             "lore": [],
             "enchants": []
@@ -599,8 +651,8 @@
         {
           "id": 1,
           "item": {
-            "item": "PUFFERFISH",
-            "amount": 6,
+            "item": "GOLD_INGOT",
+            "amount": 8,
             "name": null,
             "lore": [],
             "enchants": []
@@ -609,8 +661,8 @@
         {
           "id": 2,
           "item": {
-            "item": "TROPICAL_FISH",
-            "amount": 6,
+            "item": "BLAZE_POWDER",
+            "amount": 8,
             "name": null,
             "lore": [],
             "enchants": []
@@ -619,8 +671,8 @@
         {
           "id": 3,
           "item": {
-            "item": "LILY_PAD",
-            "amount": 12,
+            "item": "ENDER_PEARL",
+            "amount": 4,
             "name": null,
             "lore": [],
             "enchants": []
@@ -637,7 +689,7 @@
         {
           "id": 1,
           "item": {
-            "item": "NAUTILUS_SHELL",
+            "item": "GHAST_TEAR",
             "amount": 2,
             "name": null,
             "lore": [],
@@ -647,8 +699,8 @@
         {
           "id": 2,
           "item": {
-            "item": "NAME_TAG",
-            "amount": 1,
+            "item": "PHANTOM_MEMBRANE",
+            "amount": 3,
             "name": null,
             "lore": [],
             "enchants": []
@@ -658,7 +710,7 @@
           "id": 3,
           "item": {
             "item": "EXPERIENCE_BOTTLE",
-            "amount": 8,
+            "amount": 12,
             "name": null,
             "lore": [],
             "enchants": []
@@ -675,7 +727,7 @@
         {
           "id": 1,
           "item": {
-            "item": "NAUTILUS_SHELL",
+            "item": "GHAST_TEAR",
             "amount": 2,
             "name": null,
             "lore": [],
@@ -685,8 +737,8 @@
         {
           "id": 2,
           "item": {
-            "item": "NAME_TAG",
-            "amount": 1,
+            "item": "PHANTOM_MEMBRANE",
+            "amount": 3,
             "name": null,
             "lore": [],
             "enchants": []
@@ -696,7 +748,7 @@
           "id": 3,
           "item": {
             "item": "EXPERIENCE_BOTTLE",
-            "amount": 8,
+            "amount": 12,
             "name": null,
             "lore": [],
             "enchants": []
@@ -713,7 +765,7 @@
         {
           "id": 1,
           "item": {
-            "item": "NAUTILUS_SHELL",
+            "item": "GHAST_TEAR",
             "amount": 2,
             "name": null,
             "lore": [],
@@ -723,8 +775,8 @@
         {
           "id": 2,
           "item": {
-            "item": "NAME_TAG",
-            "amount": 1,
+            "item": "PHANTOM_MEMBRANE",
+            "amount": 3,
             "name": null,
             "lore": [],
             "enchants": []
@@ -734,7 +786,7 @@
           "id": 3,
           "item": {
             "item": "EXPERIENCE_BOTTLE",
-            "amount": 8,
+            "amount": 12,
             "name": null,
             "lore": [],
             "enchants": []
@@ -751,7 +803,7 @@
         {
           "id": 1,
           "item": {
-            "item": "NAUTILUS_SHELL",
+            "item": "GHAST_TEAR",
             "amount": 2,
             "name": null,
             "lore": [],
@@ -761,8 +813,8 @@
         {
           "id": 2,
           "item": {
-            "item": "NAME_TAG",
-            "amount": 1,
+            "item": "PHANTOM_MEMBRANE",
+            "amount": 3,
             "name": null,
             "lore": [],
             "enchants": []
@@ -772,7 +824,7 @@
           "id": 3,
           "item": {
             "item": "EXPERIENCE_BOTTLE",
-            "amount": 8,
+            "amount": 12,
             "name": null,
             "lore": [],
             "enchants": []
@@ -789,7 +841,7 @@
         {
           "id": 1,
           "item": {
-            "item": "NAUTILUS_SHELL",
+            "item": "GHAST_TEAR",
             "amount": 2,
             "name": null,
             "lore": [],
@@ -799,8 +851,8 @@
         {
           "id": 2,
           "item": {
-            "item": "NAME_TAG",
-            "amount": 1,
+            "item": "PHANTOM_MEMBRANE",
+            "amount": 3,
             "name": null,
             "lore": [],
             "enchants": []
@@ -810,7 +862,7 @@
           "id": 3,
           "item": {
             "item": "EXPERIENCE_BOTTLE",
-            "amount": 8,
+            "amount": 12,
             "name": null,
             "lore": [],
             "enchants": []
@@ -827,8 +879,8 @@
         {
           "id": 1,
           "item": {
-            "item": "ENCHANTED_BOOK",
-            "amount": 1,
+            "item": "DRAGON_BREATH",
+            "amount": 2,
             "name": null,
             "lore": [],
             "enchants": []
@@ -837,7 +889,7 @@
         {
           "id": 2,
           "item": {
-            "item": "HEART_OF_THE_SEA",
+            "item": "ECHO_SHARD",
             "amount": 1,
             "name": null,
             "lore": [],
@@ -848,7 +900,7 @@
           "id": 3,
           "item": {
             "item": "DIAMOND",
-            "amount": 4,
+            "amount": 5,
             "name": null,
             "lore": [],
             "enchants": []
@@ -865,8 +917,8 @@
         {
           "id": 1,
           "item": {
-            "item": "ENCHANTED_BOOK",
-            "amount": 1,
+            "item": "DRAGON_BREATH",
+            "amount": 2,
             "name": null,
             "lore": [],
             "enchants": []
@@ -875,7 +927,7 @@
         {
           "id": 2,
           "item": {
-            "item": "HEART_OF_THE_SEA",
+            "item": "ECHO_SHARD",
             "amount": 1,
             "name": null,
             "lore": [],
@@ -886,7 +938,7 @@
           "id": 3,
           "item": {
             "item": "DIAMOND",
-            "amount": 4,
+            "amount": 5,
             "name": null,
             "lore": [],
             "enchants": []
@@ -903,8 +955,8 @@
         {
           "id": 1,
           "item": {
-            "item": "ENCHANTED_BOOK",
-            "amount": 1,
+            "item": "DRAGON_BREATH",
+            "amount": 2,
             "name": null,
             "lore": [],
             "enchants": []
@@ -913,7 +965,7 @@
         {
           "id": 2,
           "item": {
-            "item": "HEART_OF_THE_SEA",
+            "item": "ECHO_SHARD",
             "amount": 1,
             "name": null,
             "lore": [],
@@ -924,7 +976,7 @@
           "id": 3,
           "item": {
             "item": "DIAMOND",
-            "amount": 4,
+            "amount": 5,
             "name": null,
             "lore": [],
             "enchants": []
@@ -941,8 +993,8 @@
         {
           "id": 1,
           "item": {
-            "item": "ENCHANTED_BOOK",
-            "amount": 1,
+            "item": "DRAGON_BREATH",
+            "amount": 2,
             "name": null,
             "lore": [],
             "enchants": []
@@ -951,7 +1003,7 @@
         {
           "id": 2,
           "item": {
-            "item": "HEART_OF_THE_SEA",
+            "item": "ECHO_SHARD",
             "amount": 1,
             "name": null,
             "lore": [],
@@ -962,7 +1014,7 @@
           "id": 3,
           "item": {
             "item": "DIAMOND",
-            "amount": 4,
+            "amount": 5,
             "name": null,
             "lore": [],
             "enchants": []
@@ -979,75 +1031,54 @@
       "item": [
         {
           "id": 0,
-          "item": "FISHING_ROD",
-          "amount": 1,
-          "name": "&6&l심해의 지배자 : 포세이돈",
+          "item": "DRAGON_BREATH",
+          "amount": 3,
+          "name": "&6&l현자의 돌 (정수)",
           "nbt": [
             "untradeable"
           ],
           "lore": [
-            "&8바다의 모든 보물과 생명을 낚아올린 전설의 낚싯대",
-            "&6[ 낚시 Lv.100 달성 보상 ]"
+            "&8금기를 깨고 물질의 본질을 완벽히 개조한 증표",
+            "&6[ 연금술 Lv.100 달성 보상 ]"
           ],
-          "enchants": [
-            {
-              "enchant": "LURE",
-              "level": 3
-            },
-            {
-              "enchant": "LUCK_OF_THE_SEA",
-              "level": 3
-            },
-            {
-              "enchant": "MENDING",
-              "level": 1
-            },
-            {
-              "enchant": "UNBREAKING",
-              "level": 3
-            }
-          ]
+          "enchants": []
         }
       ],
-      "givePlayerExp": 3000
+      "givePlayerExp": 5000
     }
   ],
   "passive": [
     {
-      "level": 50,
+      "level": 80,
       "effect": [
         {
-          "id": "night_vision",
+          "id": "luck",
           "level": 1
         }
       ],
-      "usageTime": 30,
-      "coolTime": 180
+      "usageTime": 20,
+      "coolTime": 120
     },
     {
       "level": 100,
       "effect": [
         {
-          "id": "night_vision",
-          "level": 1
-        },
-        {
-          "id": "water_breathing",
-          "level": 1
+          "id": "luck",
+          "level": 3
         }
       ],
-      "usageTime": 60,
-      "coolTime": 120
+      "usageTime": 30,
+      "coolTime": 90
     }
   ],
   "title": [
     {
-      "level": 20,
-      "title": "낚시꾼"
+      "level": 30,
+      "title": "연금술사"
     },
     {
       "level": 100,
-      "title": "바다의 신"
+      "title": "호문쿨루스"
     }
   ]
 }

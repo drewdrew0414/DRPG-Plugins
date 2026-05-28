@@ -82,6 +82,10 @@ public final class LevelDatabase {
     }
 
     public CompletableFuture<Void> markRewardClaimed(UUID uuid, String skill, int rewardLevel) {
+        return claimRewardIfAbsent(uuid, skill, rewardLevel).thenApply(claimed -> null);
+    }
+
+    public CompletableFuture<Boolean> claimRewardIfAbsent(UUID uuid, String skill, int rewardLevel) {
         return database.update(
                 """
                         INSERT OR IGNORE INTO player_level_rewards(uuid, skill, reward_level, claimed_at)
@@ -92,7 +96,7 @@ public final class LevelDatabase {
                     statement.setString(2, skill);
                     statement.setInt(3, rewardLevel);
                 }
-        ).thenApply(updatedRows -> null);
+        ).thenApply(updatedRows -> updatedRows > 0);
     }
 
     public CompletableFuture<Boolean> hasRewardClaimed(UUID uuid, String skill, int rewardLevel) {

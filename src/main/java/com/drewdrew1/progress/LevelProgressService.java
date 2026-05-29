@@ -23,6 +23,9 @@ import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.Registry;
 import org.bukkit.Sound;
+import org.bukkit.boss.BarColor;
+import org.bukkit.boss.BarStyle;
+import org.bukkit.boss.BossBar;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -33,6 +36,7 @@ import org.bukkit.scheduler.BukkitTask;
 public final class LevelProgressService {
     private static final long COMBO_TIMEOUT_MILLIS = 10_000L;
     private static final long SAVE_INTERVAL_TICKS = 100L;
+    private static final long EXP_BOSS_BAR_DURATION_TICKS = 60L;
 
     private final Main plugin;
     private final LevelDatabase levelDatabase;
@@ -41,6 +45,7 @@ public final class LevelProgressService {
     private final NamespacedKey untradeableKey;
     private final Map<SkillKey, CompletableFuture<PlayerSkillState>> states = new ConcurrentHashMap<>();
     private final Map<ComboKey, ComboState> combos = new ConcurrentHashMap<>();
+    private final Map<UUID, ExpBossBar> expBossBars = new ConcurrentHashMap<>();
     private final java.util.Set<RewardKey> rewardsInFlight = ConcurrentHashMap.newKeySet();
     private final BukkitTask saveTask;
 
@@ -140,7 +145,7 @@ public final class LevelProgressService {
 
     public LevelSnapshot defaultSnapshot(SkillConfig config) {
         int level = clamp(config.startLevel(), config.startLevel(), config.maxLevel());
-        double requiredExp = level >= config.maxLevel() ? 0.0D : requiredExp(level);
+        double requiredExp = level >= config.maxLevel() ? 0.0D : requiredExp(config, level);
         return new LevelSnapshot(
                 config.name(),
                 displayName(config),
@@ -152,7 +157,7 @@ public final class LevelProgressService {
     }
 
     public double requiredExpForLevel(int level) {
-        return requiredExp(level);
+        return Math.max(1.0D, 100.0D * (Math.max(0, level) + 1.0D));
     }
 
     public void deliverEarnedRewards(Player player) {
@@ -182,6 +187,7 @@ public final class LevelProgressService {
 
     public void unloadPlayer(UUID uuid) {
         combos.keySet().removeIf(key -> key.uuid().equals(uuid));
+        removeExpBossBar(uuid);
 
         List<Map.Entry<SkillKey, CompletableFuture<PlayerSkillState>>> playerStates = states.entrySet().stream()
                 .filter(entry -> entry.getKey().uuid().equals(uuid))
@@ -206,10 +212,12 @@ public final class LevelProgressService {
         states.clear();
         combos.clear();
         rewardsInFlight.clear();
+        removeAllExpBossBars();
     }
 
     public CompletableFuture<Void> shutdown() {
         saveTask.cancel();
+        removeAllExpBossBars();
         return flush();
     }
 
@@ -249,7 +257,16 @@ public final class LevelProgressService {
     private PlayerSkillState stateFromData(SkillKey key, SkillConfig config, int storedLevel, double storedExp) {
         int clampedLevel = clamp(storedLevel, config.startLevel(), config.maxLevel());
         double exp = Math.max(0.0D, storedExp);
+        while (clampedLevel < config.maxLevel()) {
+            double requiredExp = requiredExp(config, clampedLevel);
+            if (exp < requiredExp) {
+                break;
+            }
+            exp -= requiredExp;
+            clampedLevel++;
+        }
         if (clampedLevel >= config.maxLevel()) {
+            clampedLevel = config.maxLevel();
             exp = 0.0D;
         }
 
@@ -286,7 +303,7 @@ public final class LevelProgressService {
         double exp = state.exp() + gainedExp;
         int level = state.level();
         while (level < config.maxLevel()) {
-            double requiredExp = requiredExp(level);
+            double requiredExp = requiredExp(config, level);
             if (exp < requiredExp) {
                 break;
             }
@@ -301,6 +318,7 @@ public final class LevelProgressService {
 
         state.update(level, exp);
         state.dirty(true);
+        showExpBossBar(player, config, gainedExp, level, exp);
 
         if (level > beforeLevel) {
             player.sendMessage(ChatColor.GREEN + config.displayName() + " Lv." + level + " 달성!");
@@ -522,6 +540,56 @@ public final class LevelProgressService {
         }
     }
 
+    private void showExpBossBar(Player player, SkillConfig config, double gainedExp, int level, double exp) {
+        double requiredExp = level >= config.maxLevel() ? 0.0D : requiredExp(config, level);
+        double progress = level >= config.maxLevel()
+                ? 1.0D
+                : requiredExp <= 0.0D ? 0.0D : clamp(exp / requiredExp, 0.0D, 1.0D);
+        String title = ChatColor.GREEN + "+" + formatNumber(gainedExp) + " EXP "
+                + ChatColor.WHITE + displayName(config)
+                + ChatColor.GRAY + " | Lv." + level + " "
+                + ChatColor.AQUA + formatNumber(exp) + "/" + formatNumber(requiredExp)
+                + ChatColor.GRAY + " (" + formatNumber(progress * 100.0D) + "%)";
+
+        UUID uuid = player.getUniqueId();
+        removeExpBossBar(uuid);
+
+        BossBar bossBar = plugin.getServer().createBossBar(
+                title,
+                bossBarColor(config.bossBarColor()),
+                BarStyle.SOLID
+        );
+        bossBar.setProgress(progress);
+        bossBar.addPlayer(player);
+
+        BukkitTask removeTask = plugin.getServer().getScheduler().runTaskLater(
+                plugin,
+                () -> removeExpBossBar(uuid),
+                EXP_BOSS_BAR_DURATION_TICKS
+        );
+        expBossBars.put(uuid, new ExpBossBar(bossBar, removeTask));
+    }
+
+    private void removeExpBossBar(UUID uuid) {
+        ExpBossBar expBossBar = expBossBars.remove(uuid);
+        if (expBossBar != null) {
+            expBossBar.close();
+        }
+    }
+
+    private void removeAllExpBossBars() {
+        expBossBars.values().forEach(ExpBossBar::close);
+        expBossBars.clear();
+    }
+
+    private BarColor bossBarColor(String value) {
+        try {
+            return BarColor.valueOf(Objects.toString(value, "GREEN").toUpperCase(Locale.ROOT));
+        } catch (IllegalArgumentException exception) {
+            return BarColor.GREEN;
+        }
+    }
+
     private void cleanupCombos() {
         long now = System.currentTimeMillis();
         combos.entrySet().removeIf(entry -> now - entry.getValue().lastUpdated() > COMBO_TIMEOUT_MILLIS);
@@ -531,7 +599,7 @@ public final class LevelProgressService {
         synchronized (state) {
             int level = state.level();
             double exp = state.exp();
-            double requiredExp = level >= config.maxLevel() ? 0.0D : requiredExp(level);
+            double requiredExp = level >= config.maxLevel() ? 0.0D : requiredExp(config, level);
             return new LevelSnapshot(
                     config.name(),
                     displayName(config),
@@ -543,8 +611,8 @@ public final class LevelProgressService {
         }
     }
 
-    private double requiredExp(int level) {
-        return 100.0D + (Math.max(0, level) * 50.0D);
+    private double requiredExp(SkillConfig config, int level) {
+        return Math.max(1.0D, config.requiredExpPerLevel()) * (Math.max(0, level) + 1.0D);
     }
 
     private String displayName(SkillConfig config) {
@@ -557,11 +625,26 @@ public final class LevelProgressService {
         return ChatColor.translateAlternateColorCodes('&', value);
     }
 
+    private String formatNumber(double value) {
+        if (!Double.isFinite(value)) {
+            return "0";
+        }
+        double rounded = Math.rint(value);
+        if (Math.abs(value - rounded) < 0.000001D) {
+            return Long.toString(Math.round(rounded));
+        }
+        return String.format(Locale.US, "%.2f", value);
+    }
+
     private String normalize(String value) {
         return Objects.toString(value, "").toLowerCase(Locale.ROOT);
     }
 
     private int clamp(int value, int min, int max) {
+        return Math.max(min, Math.min(max, value));
+    }
+
+    private double clamp(double value, double min, double max) {
         return Math.max(min, Math.min(max, value));
     }
 
@@ -594,6 +677,13 @@ public final class LevelProgressService {
     }
 
     private record RewardKey(UUID uuid, String skill, int level) {
+    }
+
+    private record ExpBossBar(BossBar bossBar, BukkitTask removeTask) {
+        private void close() {
+            removeTask.cancel();
+            bossBar.removeAll();
+        }
     }
 
     private static final class PlayerSkillState {

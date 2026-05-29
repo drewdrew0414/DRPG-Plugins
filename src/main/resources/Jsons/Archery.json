@@ -4,6 +4,8 @@
   "startLevel": 0,
   "maxLevel": 100,
   "multipleExp": 1,
+  "requiredExpPerLevel": 100,
+  "bossBarColor": "GREEN",
   "getExp": [
     {
       "rangedKill": [

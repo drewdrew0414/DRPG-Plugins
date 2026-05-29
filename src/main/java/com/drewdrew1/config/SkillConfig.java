@@ -10,6 +10,8 @@ public final class SkillConfig {
     private int startLevel;
     private int maxLevel;
     private double multipleExp;
+    private double requiredExpPerLevel;
+    private String bossBarColor;
     private List<Map<String, List<ExpRule>>> getExp;
     private List<RewardConfig> getItem;
     private List<PassiveConfig> passive;
@@ -33,6 +35,14 @@ public final class SkillConfig {
 
     public double multipleExp() {
         return multipleExp;
+    }
+
+    public double requiredExpPerLevel() {
+        return requiredExpPerLevel <= 0.0D ? 100.0D : requiredExpPerLevel;
+    }
+
+    public String bossBarColor() {
+        return bossBarColor == null || bossBarColor.isBlank() ? "GREEN" : bossBarColor;
     }
 
     public List<Map<String, List<ExpRule>>> getExp() {

@@ -64,6 +64,24 @@ public final class TicketService {
         return isInviteTicket(player.getInventory().getItemInOffHand());
     }
 
+    public boolean hasInviteTicket(Player player) {
+        for (ItemStack item : player.getInventory().getContents()) {
+            if (isInviteTicket(item)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean hasExpansionTicket(Player player) {
+        for (ItemStack item : player.getInventory().getContents()) {
+            if (isExpansionTicket(item)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public boolean consumeInviteTicketFromOffhand(Player player) {
         return consumeFromSlot(player, EquipmentSlot.OFF_HAND, this::isInviteTicket);
     }

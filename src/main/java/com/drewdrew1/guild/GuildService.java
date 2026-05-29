@@ -71,7 +71,17 @@ public final class GuildService {
                 inviter.sendMessage(rootMessage(throwable));
                 return;
             }
-            inviteToGuild(inviter, guild, targetName);
+            inviteToGuild(inviter, guild, targetName, true);
+        }));
+    }
+
+    public void forceInvite(Player inviter, String targetName, String guildName) {
+        resolveManagedGuild(inviter, guildName).whenComplete((guild, throwable) -> runSync(() -> {
+            if (throwable != null) {
+                inviter.sendMessage(rootMessage(throwable));
+                return;
+            }
+            inviteToGuild(inviter, guild, targetName, false);
         }));
     }
 
@@ -143,7 +153,7 @@ public final class GuildService {
                 player.sendMessage("길드를 찾지 못했습니다.");
                 return;
             }
-            inviteToGuild(player, guild.get(), message);
+            inviteToGuild(player, guild.get(), message, true);
         }));
     }
 
@@ -368,8 +378,8 @@ public final class GuildService {
         });
     }
 
-    private void inviteToGuild(Player inviter, Guild guild, String targetName) {
-        if (!ticketService.hasInviteTicketInOffhand(inviter)) {
+    private void inviteToGuild(Player inviter, Guild guild, String targetName, boolean requireTicket) {
+        if (requireTicket && !ticketService.hasInviteTicketInOffhand(inviter)) {
             inviter.sendMessage("길드 초대권을 왼손에 들고 있어야 합니다.");
             return;
         }
@@ -389,7 +399,7 @@ public final class GuildService {
                         inviter.sendMessage("초대를 등록하지 못했습니다: " + rootMessage(throwable));
                         return;
                     }
-                    if (!ticketService.consumeInviteTicketFromOffhand(inviter)) {
+                    if (requireTicket && !ticketService.consumeInviteTicketFromOffhand(inviter)) {
                         inviter.sendMessage("초대권이 사라져 초대를 완료하지 못했습니다.");
                         repository.denyInvite(target.getUniqueId(), guild.name());
                         return;

@@ -5,6 +5,7 @@ import com.drewdrew1.command.StorageCommand;
 import com.drewdrew1.config.StorageGuildConfig;
 import com.drewdrew1.db.StorageRepository;
 import com.drewdrew1.guild.GuildService;
+import com.drewdrew1.integration.IntegrationManager;
 import com.drewdrew1.listener.ChatPromptListener;
 import com.drewdrew1.listener.StorageListener;
 import com.drewdrew1.listener.TicketListener;
@@ -21,6 +22,7 @@ public final class Main extends JavaPlugin {
     private StorageManager storageManager;
     private GuildService guildService;
     private TicketService ticketService;
+    private IntegrationManager integrationManager;
 
     @Override
     public void onEnable() {
@@ -48,6 +50,9 @@ public final class Main extends JavaPlugin {
         Objects.requireNonNull(getCommand("guild")).setExecutor(guildCommand);
         Objects.requireNonNull(getCommand("guild")).setTabCompleter(guildCommand);
 
+        integrationManager = new IntegrationManager(this, repository, guildService, storageManager, ticketService, config);
+        integrationManager.register();
+
         getLogger().info("storageGuild enabled.");
     }
 
@@ -55,6 +60,10 @@ public final class Main extends JavaPlugin {
     public void onDisable() {
         if (storageManager != null) {
             storageManager.flushAll();
+        }
+        if (integrationManager != null) {
+            integrationManager.unregister();
+            integrationManager = null;
         }
         if (databaseService != null) {
             databaseService.close();
